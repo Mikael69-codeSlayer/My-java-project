@@ -7,6 +7,8 @@ public class Game {
                       // Scanner for input
     private final Scanner scan = new Scanner(System.in);
 
+    private ArrayList<Player> players = new ArrayList<>();
+
     // My "start" method
     protected void gameStart() {
         // Menu:  start - end
@@ -44,7 +46,6 @@ public class Game {
     // Game Rounds
     private void setGameRounds() {
         System.out.println("How many rounds do you want to play? (5-30)");
-      // while (true) {
             try {
                 String gameRounds = scan.next();
                 int gameRoundsInt = Integer.parseInt(gameRounds);
@@ -55,14 +56,12 @@ public class Game {
                     System.out.println("You need to choose between 5 and 30!");
                     setGameRounds();
                 }
-               // break;
 
             } catch (Exception e) {
                 System.out.println("You cannot type letters/words here!" +
                        " Please, try again. Choose between 5 - 30");
 
             }
-       // }
     }
 
     // How many players?
@@ -73,6 +72,7 @@ public class Game {
                 int setGamePlayerInteger = Integer.parseInt(setGamePlayersInput);
                 if(setGamePlayerInteger >= 1 && setGamePlayerInteger <= 4) {
                     System.out.println(setGamePlayerInteger + " players will play the game");
+                    setPlayerNames(setGamePlayerInteger);
                 }
                 else if(setGamePlayerInteger == 0){
                     System.out.println("You need to enter at least 1 player!");
@@ -80,7 +80,6 @@ public class Game {
                 } else {
                     System.out.println("Max 4 players!");
                     setGamePlayers();
-                   // break;
                 }
 
             } catch (Exception e) {
@@ -95,11 +94,11 @@ public class Game {
         System.out.println("Are you sure that you want to exit? [yes/no]");
         String playerInput2 = scan.next();
        // if-statement
-        if (playerInput2.equals("yes")) {
+        if (playerInput2.equalsIgnoreCase("yes")) {
             System.out.println("You closed the game");
             System.exit(0);
 
-        } else if (playerInput2.equals("no")) {
+        } else if (playerInput2.equalsIgnoreCase("no")) {
             gameStart();  // Calls gameStart()-method and returns Start Menu
 
         } else {
@@ -109,6 +108,26 @@ public class Game {
             gameRestart(); // Calls gameRestart()-method
         }
     }
+    private void setPlayerNames(int numberOfPlayers) {
+
+        for(var i = 1; i <= numberOfPlayers; i++){
+            System.out.println("Enter the name of player " + i);
+            players.add(new Player(scan.next()));
+
+            // Another variant
+            /*var name = scan.next();
+            var aNewPlayer = new Player(name);
+            players.add(aNewPlayer);*/
+        }
+
+        // foreach loop genom players
+        System.out.println("List of players:");
+        for(var player : players){
+            System.out.println(player.name);
+        }
+
+    }
+
 
 }
 
