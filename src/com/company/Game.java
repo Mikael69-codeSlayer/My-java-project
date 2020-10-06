@@ -23,6 +23,7 @@ public class Game {
                 if (playerInputInteger == 1) {
 
                     setGameRounds(); // Calls setGameRounds-method
+                    setGamePlayers(); // Calls setGamePlayers-method
 
                 } else if (playerInputInteger == 2) {
 
@@ -32,7 +33,7 @@ public class Game {
                     System.out.println("Enter 1 or 2!");
                     gameStart();
                 }
-              // throwsn an Exception
+              // throws an Exception
             } catch (Exception e) {
                 System.out.println("No letters / words here!" +
                         "\nEnter 1 or 2!");
@@ -43,7 +44,7 @@ public class Game {
     // Game Rounds
     private void setGameRounds() {
         System.out.println("How many rounds do you want to play? (5-30)");
-       while (true) {
+      // while (true) {
             try {
                 String gameRounds = scan.next();
                 int gameRoundsInt = Integer.parseInt(gameRounds);
@@ -54,14 +55,39 @@ public class Game {
                     System.out.println("You need to choose between 5 and 30!");
                     setGameRounds();
                 }
-                break;
+               // break;
 
             } catch (Exception e) {
                 System.out.println("You cannot type letters/words here!" +
                        " Please, try again. Choose between 5 - 30");
 
             }
-        }
+       // }
+    }
+
+    // How many players?
+    private void setGamePlayers() {
+        System.out.println("How many players will play the game?");
+            try {
+                String setGamePlayersInput = scan.next();
+                int setGamePlayerInteger = Integer.parseInt(setGamePlayersInput);
+                if(setGamePlayerInteger >= 1 && setGamePlayerInteger <= 4) {
+                    System.out.println(setGamePlayerInteger + " players will play the game");
+                }
+                else if(setGamePlayerInteger == 0){
+                    System.out.println("You need to enter at least 1 player!");
+                    setGamePlayers();
+                } else {
+                    System.out.println("Max 4 players!");
+                    setGamePlayers();
+                   // break;
+                }
+
+            } catch (Exception e) {
+                System.out.println("You cannot type letters/words here!");
+                setGamePlayers();
+            }
+
     }
 
     // Play again
