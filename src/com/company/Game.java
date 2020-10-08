@@ -7,7 +7,7 @@ public class Game {
                       // Scanner for input
     private final Scanner scan = new Scanner(System.in);
 
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
 
     // My "start" method
     protected void gameStart() {
@@ -26,6 +26,8 @@ public class Game {
 
                     setGameRounds(); // Calls setGameRounds-method
                     setGamePlayers(); // Calls setGamePlayers-method
+
+                    mainMenu(players.get(0));
 
                 } else if (playerInputInteger == 2) {
 
@@ -60,6 +62,7 @@ public class Game {
             } catch (Exception e) {
                 System.out.println("You cannot type letters/words here!" +
                        " Please, try again. Choose between 5 - 30");
+                setGameRounds();
 
             }
     }
@@ -84,7 +87,6 @@ public class Game {
 
             } catch (Exception e) {
                 System.out.println("You cannot type letters/words here!");
-                setGamePlayers();
             }
 
     }
@@ -121,12 +123,36 @@ public class Game {
         }
 
         // foreach loop genom players
-        System.out.println("List of players:");
+        System.out.println("List of players: ");
         for(var player : players){
             System.out.println(player.name);
         }
 
     }
+
+    private void mainMenu(Player player) {
+        System.out.println("===== MAIN MENU =====");
+        System.out.println("First player's turn: " + player.name +
+                "\n Budget: " + player.money + "kr");
+        System.out.println("1. Buy animal" +
+                         "\n2. Buy food" +
+                         "\n3. Feed animal" +
+                         "\n4. Birth new animal" +
+                         "\n5. Sell animal");
+        playerChoice(player);
+
+    }
+
+    private void playerChoice(Player player) {
+        Store s = new Store();
+        int pChoice = scan.nextInt();
+
+        // Buy animal
+        if(pChoice == 1) {
+            s.sellAnimals(player);
+        }
+    }
+
 
 
 }
