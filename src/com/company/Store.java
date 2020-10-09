@@ -12,9 +12,9 @@ public class Store {
         animalList();
         playerBuyAnimal(player);
 
+
     }
     public void animalList() {
-
 
         System.out.println("1. Cat.  Price 200kr" +
                          "\n2. Rabbit.  Price 150kr" +
@@ -75,10 +75,12 @@ public class Store {
         }
 
 
+
         // How do we know which player is bying the animal?
         // We need to add the knewly created animal to that players list of animals!
 
     }
+
 
     public static String askName(String animalType) {
         System.out.println("Name your " + animalType + ": ");
@@ -90,111 +92,85 @@ public class Store {
        return scan.next();
 
     }
+    public static void askFood(String foodType) {
+        System.out.println("How many " + foodType + " " +
+                "you want to buy? (kg):" );
+        //return scan.nextInt();
+    }
 
 
+    // Food List
+    public void foodList(Player player) {
+        System.out.println("Hi! What do you want to buy?" +
+                "\n1. Buy cat food" +
+                "\n2. Buy rabbit food" +
+                "\n3. Buy horse food" +
+                "\n4. Buy donkey food" +
+                "\n5. Buy pig food");
+        foodListChoose(player);
 
+    }
+       // Choose food
+    public void foodListChoose(Player player) {
+        int foodChoose = scan.nextInt();
 
+        if(foodChoose == 1) {
+            System.out.println("========== CAT FOOD ==========");
+            System.out.println(  "1. Cat noodles. Price: 50kr/kg" +
+                               "\n2. Fish. Price: 100kr/kg" +
+                               "\n3. Bananas. Price: 20kr/kg" +
+                               "\n4. Berries. Price: 150kr/kg");
+        }
+        else if(foodChoose == 2) {
+            System.out.println("======== RABBIT FOOD ========");
+            System.out.println("1. Carrot. Price: 20kr/kg" +
+                             "\n2. Cucumber. Price: 20kr/kg" +
+                             "\n3. Zucchini. Price: 45kr/kg");
+        }
+        else if(foodChoose == 3) {
+            System.out.println("======== HORSE FOOD ========");
+            System.out.println("1. Melons. Price: 35kr/kg " +
+                               "\n2. Pumpkin. Price: 40kr/kg" +
+                               "\n3. Grass. Price: 20kr/kg");
+        }
+        else if (foodChoose == 4) {
+            System.out.println("======== DONKEY FOOD ========");
+            System.out.println("1. Carrots. Price: 20kr/kg" +
+                             "\n2. Apples. Price: 35kr/kg" +
+                             "\n3. SugarBeet. Price: 10kr/kg");
+        }
+        else if (foodChoose == 5) {
+            System.out.println("======== PIG FOOD ========");
+            System.out.println("1. Corn. Price: 15kr/kg" +
+                             "\n2. Soybeans. Price: 20kr/kg");
+        }
 
+        playerBuyFood(player);
 
+    }
 
+    public void playerBuyFood(Player player) {
+        int playerChoise2 = scan.nextInt();
 
+        if(playerChoise2 == 1) {
 
+            askFood("Cat Noodles");
+          int nood = scan.nextInt();
+          var catNood = new CatNoodles().createFood("Cat Noodles");
+          int price = nood * catNood.aFoodPrice;
 
+            System.out.println("Price: " + price);
+            System.out.println("Budget: " );
 
+            System.out.println(p.money - price);
+            player.ownedFood.add(catNood);
+            System.out.println(player.name + " bought " + nood + "kg " + player.ownedFood.get(0).foodName);
 
+        }
 
+        }
 
-  /*  public void availableAnimals() {
-        // Cats
-        // Male cat
-
-        var cat = new Cat().createAnimal("Gustav", "male");
-        System.out.println(cat.getClass().getSimpleName()
-                + "\n Name: " + cat.animalName
-                + "\n Gender: " + cat.animalGender
-                + "\n Price: " + cat.price
-                + "\n Health Points: " + cat.healthPoints);
-
-
-
-
-        // Female cat
-        var cat2 = new Cat().createAnimal("Linnea", "female");
-        System.out.println(cat2.getClass().getSimpleName()
-                + "\n Name: " + cat2.animalName
-                + "\n Gender: " + cat2.animalGender
-                + "\n Price: " + cat2.price
-                + "\n Health Points: " + cat2.healthPoints);
-
-        // Rabbits
-        // Male Rabbit
-        var rabbit = new Rabbit().createAnimal("Albin", "male");
-        System.out.println(rabbit.getClass().getSimpleName()
-                + "\n Name: " + rabbit.animalName
-                + "\n Gender: " + rabbit.animalGender
-                + "\n Price: " + rabbit.price
-                + "\n Health Points: " + rabbit.healthPoints);
-
-        // Female rabbit
-        var rabbit2 = new Rabbit().createAnimal("Josephine", "female");
-        System.out.println(rabbit2.getClass().getSimpleName()
-                + "\n Name: " + rabbit2.animalName
-                + "\n Gender: " + rabbit2.animalGender
-                + "\n Price: " + rabbit2.price
-                + "\n Health Points: " + rabbit2.healthPoints);
-
-        // Horses
-        // Male horse
-        var horse = new Horse().createAnimal("Johnny", "male");
-        System.out.println(horse.getClass().getSimpleName()
-                + "\n Name: " + horse.animalName
-                + "\n Gender: " + horse.animalGender
-                + "\n Price: " + horse.price
-                + "\n Health Points: " + horse.healthPoints);
-
-        //Female horse
-        var horse2 = new Horse().createAnimal("Johanna", "female");
-        System.out.println(horse2.getClass().getSimpleName()
-                + "\n Name: " + horse2.animalName
-                + "\n Gender: " + horse2.animalGender
-                + "\n Price: " + horse2.price
-                + "\n Health Points: " + horse2.healthPoints);
-
-        // Donkeys
-        // Male donkey
-        var donkey = new Donkey().createAnimal("Bertil", "male");
-        System.out.println(donkey.getClass().getSimpleName()
-                + "\n Name: " + donkey.animalName
-                + "\n Gender: " + donkey.animalGender
-                + "\n Price: " + donkey.price + "\n Health Points: " + donkey.healthPoints);
-
-       // Female donkey
-        var donkey2 = new Donkey().createAnimal("Bonnie", "female");
-        System.out.println(donkey2.getClass().getSimpleName()
-                + "\n Name: " + donkey2.animalName
-                + "\n Gender: " + donkey2.animalGender
-                + "\n Price: " + donkey2.price
-                + "\n Health Points: " + donkey2.healthPoints);
-
-        // Pigs
-        // Male pig
-        var pig = new Pig().createAnimal("Bruce", "male");
-        System.out.println(pig.getClass().getSimpleName()
-                + "\n Name: " + pig.animalName
-                + "\n Gender: " + pig.animalGender
-                + "\n Price: " + pig.price
-                + "\n Health Points: " + pig.healthPoints);
-
-        // Female pig
-        // Female donkey
-        var pig2 = new Pig().createAnimal("Sakura", "female");
-        System.out.println(pig2.getClass().getSimpleName()
-                + "\n Name: " + pig2.animalName
-                + "\n Gender: " + pig2.animalGender
-                + "\n Price: " + pig2.price
-                + "\n Health Points: " + pig2.healthPoints);
-    } */
 }
 
-// array list i player
-// mappa ut djur
+
+

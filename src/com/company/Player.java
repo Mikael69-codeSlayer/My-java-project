@@ -9,7 +9,7 @@ public class Player {
     public int money = 10000;
     // Own Animals
      public ArrayList<Animal> ownedAnimals = new ArrayList<>();
-
+     public ArrayList<Food> ownedFood = new ArrayList<>();
 
 
     public Player(String name) {
