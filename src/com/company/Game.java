@@ -4,10 +4,14 @@ package com.company;
 import java.util.*;
 
 public class Game {
+
+    protected int gameRounds;
                       // Scanner for input
     private final Scanner scan = new Scanner(System.in);
 
     private final ArrayList<Player> players = new ArrayList<>();
+
+    Player p = new Player();
 
     // My "start" method
     protected void gameStart() {
@@ -17,6 +21,7 @@ public class Game {
                 "\n2. Exit");
             // try catch. If you enter words/letters
         // It will throw an error message
+
         try {
                 // String -> int. Because I want only figures here
                 String playerInput = scan.next();
@@ -24,10 +29,13 @@ public class Game {
                 // If-else statements
                 if (playerInputInteger == 1) {
 
+
                     setGameRounds(); // Calls setGameRounds-method
                     setGamePlayers(); // Calls setGamePlayers-method
 
-                    mainMenu(players.get(0));
+                    mainMenu();
+
+
 
                 } else if (playerInputInteger == 2) {
 
@@ -46,26 +54,34 @@ public class Game {
     }
 
     // Game Rounds
+
     private void setGameRounds() {
-        System.out.println("How many rounds do you want to play? (5-30)");
-            try {
-                String gameRounds = scan.next();
-                int gameRoundsInt = Integer.parseInt(gameRounds);
-                if (gameRoundsInt >= 5 && gameRoundsInt <= 30) {
-                    System.out.println("You will play " + gameRoundsInt + " rounds.");
+            System.out.println("How many rounds do you want to play? (5-30)");
 
-                } else {
-                    System.out.println("You need to choose between 5 and 30!");
+                try {
+                    gameRounds = Integer.parseInt(scan.next());
+                    //String gameRounds = scan.next();
+                    //int gameRoundsInt = Integer.parseInt(gameRounds);
+                    if (gameRounds >= 5 && gameRounds <= 30
+                        //  gameRoundsInt >= 5 && gameRoundsInt <= 30
+                    ) {
+                        // for loop runs rounds
+                        System.out.println("You will play " + gameRounds + " rounds.");
+
+                    } else {
+                        System.out.println("You need to choose between 5 and 30!");
+                        setGameRounds();
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("You cannot type letters/words here!" +
+                            " Please, try again. Choose between 5 - 30");
                     setGameRounds();
+
                 }
-
-            } catch (Exception e) {
-                System.out.println("You cannot type letters/words here!" +
-                       " Please, try again. Choose between 5 - 30");
-                setGameRounds();
-
             }
-    }
+
+
 
     // How many players?
     private void setGamePlayers() {
@@ -87,6 +103,7 @@ public class Game {
 
             } catch (Exception e) {
                 System.out.println("You cannot type letters/words here!");
+                setGamePlayers();
             }
 
     }
@@ -110,11 +127,13 @@ public class Game {
             gameRestart(); // Calls gameRestart()-method
         }
     }
+
+    // Name players
     private void setPlayerNames(int numberOfPlayers) {
 
         for(var i = 1; i <= numberOfPlayers; i++){
             System.out.println("Enter the name of player " + i);
-            players.add(new Player(scan.next()));
+                players.add(new Player(scan.next()));
 
             // Another variant
             /*var name = scan.next();
@@ -130,17 +149,29 @@ public class Game {
 
     }
 
-    private void mainMenu(Player player) {
-        System.out.println("===== MAIN MENU =====");
-        System.out.println("First player's turn: " + player.name +
-                "\n Budget: " + player.money + "kr");
-        System.out.println("1. Buy animal" +
-                         "\n2. Buy food" +
-                         "\n3. Feed animal" +
-                         "\n4. Birth new animal" +
-                         "\n5. Sell animal");
-        playerChoice(player);
+    protected void mainMenu() {
+        for (var i = 1; i <= gameRounds; i++) {
+            System.out.println("===== MAIN MENU =====");
+            System.out.println("Round " + i + ", Total rounds: " + gameRounds);
 
+            //System.out.println("First player's turn: " + player.name +
+            //      "\n Budget: " + player.money + "kr");
+
+            currectRound();
+
+            System.out.println("1. Buy animal" +
+                    "\n2. Buy food" +
+                    "\n3. Feed animal" +
+                    "\n4. Birth new animal" +
+                    "\n5. Sell animal" +
+                    "\n6. Show animals" +
+                    "\n7. Show food" +
+
+
+                    "\n\n8. Exit to Start Menu");
+            playerChoice(p);
+
+        }
     }
 
     private void playerChoice(Player player) {
@@ -150,8 +181,39 @@ public class Game {
         // Buy animal
         if(pChoice == 1) {
             s.sellAnimals(player);
+        } else if (pChoice == 2) {
+            s.foodList(player);
+        }
+         else if(pChoice == 6) {
+            System.out.println("Your animals:");
+            player.myAnimals();
+        }
+         else if(pChoice == 7) {
+             player.myFood();
+        }
+
+        else if (pChoice == 8) {
+            System.out.println("----> back to Start Menu");
+            gameStart();
+        }
+
+        else {
+            System.out.println("Wrong input. Try again.");
+            mainMenu();
         }
     }
+
+
+    private void currectRound() { // changed
+
+        for(var player : players) {
+            System.out.println("It's " + player.name +"'s turn now!" +
+                    " Your budget is: " + p.money);
+
+        }
+
+    }
+
 
 
 
