@@ -46,8 +46,11 @@ public class Store {
 
             else {
 
+                // Subtract the cat.price from player.money
+                player.money -= cat.price;
+
                 System.out.println("Budget: ");
-                System.out.println(player.money - cat.price);
+                System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(cat);
 
@@ -74,9 +77,10 @@ public class Store {
             }
 
             else {
+                player.money -= rabbit.price;
 
                 System.out.println("Budget: ");
-                System.out.println(player.money - rabbit.price);
+                System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(rabbit);
                 System.out.println(player.name + " purchased: " + "Rabbit " +
@@ -101,9 +105,10 @@ public class Store {
             }
 
             else {
+                player.money -= horse.price;
 
                 System.out.println("Budget: ");
-                System.out.println(player.money - horse.price);
+                System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(horse);
                 System.out.println(player.name + " purchased: " + "Horse " +
@@ -119,7 +124,7 @@ public class Store {
                     "have to return the animal.");
 
             var name = askName("Donkey");
-            var donkey = new Rabbit().createAnimal(name, askGender(name));
+            var donkey = new Donkey().createAnimal(name, askGender(name));
 
             if(player.money < donkey.price) {
                 System.out.println("You don't have enough money to afford this animal!" +
@@ -128,9 +133,10 @@ public class Store {
             }
 
             else {
+                player.money -= donkey.price;
 
                 System.out.println("Budget: ");
-                System.out.println(player.money - donkey.price);
+                System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(donkey);
                 System.out.println(player.name + " purchased: " + "Donkey " +
@@ -142,16 +148,29 @@ public class Store {
         }
 
         if (playerChoice == 5) {
+
+            System.out.println("If you don't have enough money, you'll " +
+                    "have to return the animal.");
+
             var name = askName("Pig");
-            var pig = new Rabbit().createAnimal(name, askGender(name));
-            System.out.println("Budget: ");
-            System.out.println(player.money - pig.price);
-            // adds animals to ArrayList
-            player.ownedAnimals.add(pig);
-            System.out.println(player.name + " purchased: " + "Pig " +
-                    player.ownedAnimals.get(0).animalName +
-                    ", Health: " + pig.healthPoints);
-            buyMoreAnimals(player);
+            var pig = new Pig().createAnimal(name, askGender(name));
+
+            if (player.money < pig.price) {
+                System.out.println("You don't have enough money to afford this animal!" +
+                        "\nReturning back to Store...");
+                animalList();
+            } else {
+                player.money -= pig.price;
+
+                System.out.println("Budget: ");
+                System.out.println(player.money);
+                // adds animals to ArrayList
+                player.ownedAnimals.add(pig);
+                System.out.println(player.name + " purchased: " + "Pig " +
+                        player.ownedAnimals.get(0).animalName +
+                        ", Health: " + pig.healthPoints);
+                buyMoreAnimals(player);
+            }
         }
         if (playerChoice == 6) {
             g.mainMenu();
