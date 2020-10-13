@@ -276,11 +276,12 @@ public class Store {
                         "\nReturning back to Store.....");
                 foodList(player);
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(catNood);
                 System.out.println(player.name + " bought " + nood + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -302,10 +303,12 @@ public class Store {
 
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(fish);
                 System.out.println(player.name + " bought " + fishFish + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -325,11 +328,12 @@ public class Store {
                         "\nReturning back to Store.....");
                 foodList(player);
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(bananas);
                 System.out.println(player.name + " bought " + banana + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -349,11 +353,12 @@ public class Store {
                         "\nReturning back to Store.....");
                 foodList(player);
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(berries);
                 System.out.println(player.name + " bought " + berry + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -374,11 +379,12 @@ public class Store {
                 foodList(player);
 
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(carrots);
                 System.out.println(player.name + " bought " + carrot + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -400,10 +406,12 @@ public class Store {
 
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(cucumbers);
                 System.out.println(player.name + " bought " + cucumber + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -423,11 +431,12 @@ public class Store {
                         "\nReturning back to Store.....");
                 foodList(player);
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(zucchinis);
                 System.out.println(player.name + " bought " + zucchini + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -447,11 +456,12 @@ public class Store {
                         "\nReturning back to Store.....");
                 foodList(player);
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(melons);
                 System.out.println(player.name + " bought " + melon + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -472,10 +482,12 @@ public class Store {
                 foodList(player);
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(pumpkins);
                 System.out.println(player.name + " bought " + pumpkin + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -496,10 +508,12 @@ public class Store {
                 foodList(player);
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(grasses);
                 System.out.println(player.name + " bought " + grass + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -520,10 +534,12 @@ public class Store {
                 foodList(player);
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(pears);
                 System.out.println(player.name + " bought " + pear + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -544,10 +560,12 @@ public class Store {
                 foodList(player);
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(apples);
                 System.out.println(player.name + " bought " + apple + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -568,10 +586,12 @@ public class Store {
                 foodList(player);
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(sugarBeets);
                 System.out.println(player.name + " bought " + sugarBeet + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -592,10 +612,12 @@ public class Store {
                 foodList(player);
             } else {
 
+                player.money -= price;
+
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(corns);
                 System.out.println(player.name + " bought " + corn + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -615,11 +637,12 @@ public class Store {
                         "\nReturning back to Store.....");
                 foodList(player);
             } else {
+                player.money -= price;
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(player.money - price);
+                System.out.println(player.money);
                 player.ownedFood.add(soybeans);
                 System.out.println(player.name + " bought " + soybean + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
