@@ -16,15 +16,12 @@ public class Player {
         this.name = name;
     }
 
-    public Player() {
-        // Empty, because I want to call Player class
-        // in other classes
-    }
-
     public void myAnimals() {
         for(var animal : ownedAnimals) {
             System.out.println("Animal: " + animal.type
-                    + ", Name: " + animal.animalName + ", Gender: " + animal.animalGender);
+                    + ", Name: " + animal.animalName
+                    + ", Gender: " + animal.animalGender
+                    + ", Health: " + animal.healthPoints);
 
         }
     }

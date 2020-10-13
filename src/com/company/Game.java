@@ -11,8 +11,6 @@ public class Game {
 
     private final ArrayList<Player> players = new ArrayList<>();
 
-    Player p = new Player();
-
     // My "start" method
     protected void gameStart() {
         // Menu:  start - end
@@ -151,27 +149,35 @@ public class Game {
 
     protected void mainMenu() {
         for (var i = 1; i <= gameRounds; i++) {
-            System.out.println("===== MAIN MENU =====");
-            System.out.println("Round " + i + ", Total rounds: " + gameRounds);
 
-            //System.out.println("First player's turn: " + player.name +
-            //      "\n Budget: " + player.money + "kr");
+            for (var player : players) {
 
-            currectRound();
+                System.out.println("===== MAIN MENU =====");
+                System.out.println("Current round " + i + ", Total rounds: " + gameRounds);
 
-            System.out.println("1. Buy animal" +
-                    "\n2. Buy food" +
-                    "\n3. Feed animal" +
-                    "\n4. Birth new animal" +
-                    "\n5. Sell animal" +
-                    "\n6. Show animals" +
-                    "\n7. Show food" +
+                //System.out.println("First player's turn: " + player.name +
+                //      "\n Budget: " + player.money + "kr");
+
+                System.out.println("It's " + player.name +"'s turn now!" +
+                        " Your budget is: " + player.money);
+
+                System.out.println("1. Buy animal" +
+                        "\n2. Buy food" +
+                        "\n3. Feed animal" +
+                        "\n4. Birth new animal" +
+                        "\n5. Sell animal" +
+                        "\n6. Show animals" +
+                        "\n7. Show food" +
 
 
-                    "\n\n8. Exit to Start Menu");
-            playerChoice(p);
+                        "\n\n8. Exit to Start Menu");
+
+                playerChoice(player);
+
+            }
 
         }
+
     }
 
     private void playerChoice(Player player) {
@@ -202,19 +208,6 @@ public class Game {
             mainMenu();
         }
     }
-
-
-    private void currectRound() { // changed
-
-        for(var player : players) {
-            System.out.println("It's " + player.name +"'s turn now!" +
-                    " Your budget is: " + p.money);
-
-        }
-
-    }
-
-
 
 
 }

@@ -5,7 +5,7 @@ import java.util.*;
 public class Store {
 
     static Scanner scan = new Scanner(System.in);
-    Player p = new Player();
+
     Game g = new Game();
 
     public void sellAnimals(Player player) {
@@ -38,7 +38,7 @@ public class Store {
             var name = askName("Cat");
             var cat = new Cat().createAnimal(name, askGender(name));
 
-            if(p.money < cat.price) {
+            if(player.money < cat.price) {
                 System.out.println("You don't have enough money to afford this animal!" +
                         "\nReturning back to Store...");
                 animalList();
@@ -47,7 +47,7 @@ public class Store {
             else {
 
                 System.out.println("Budget: ");
-                System.out.println(p.money - cat.price);
+                System.out.println(player.money - cat.price);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(cat);
 
@@ -67,7 +67,7 @@ public class Store {
             var name = askName("Rabbit");
             var rabbit = new Rabbit().createAnimal(name, askGender(name));
 
-            if(p.money < rabbit.price) {
+            if(player.money < rabbit.price) {
                 System.out.println("You don't have enough money to afford this animal!" +
                         "\nReturning back to Store...");
                 animalList();
@@ -76,7 +76,7 @@ public class Store {
             else {
 
                 System.out.println("Budget: ");
-                System.out.println(p.money - rabbit.price);
+                System.out.println(player.money - rabbit.price);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(rabbit);
                 System.out.println(player.name + " purchased: " + "Rabbit " +
@@ -94,7 +94,7 @@ public class Store {
             var name = askName("Horse");
             var horse = new Horse().createAnimal(name, askGender(name));
 
-            if(p.money < horse.price) {
+            if(player.money < horse.price) {
                 System.out.println("You don't have enough money to afford this animal!" +
                         "\nReturning back to Store...");
                 animalList();
@@ -103,7 +103,7 @@ public class Store {
             else {
 
                 System.out.println("Budget: ");
-                System.out.println(p.money - horse.price);
+                System.out.println(player.money - horse.price);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(horse);
                 System.out.println(player.name + " purchased: " + "Horse " +
@@ -121,7 +121,7 @@ public class Store {
             var name = askName("Donkey");
             var donkey = new Rabbit().createAnimal(name, askGender(name));
 
-            if(p.money < donkey.price) {
+            if(player.money < donkey.price) {
                 System.out.println("You don't have enough money to afford this animal!" +
                         "\nReturning back to Store...");
                 animalList();
@@ -130,7 +130,7 @@ public class Store {
             else {
 
                 System.out.println("Budget: ");
-                System.out.println(p.money - donkey.price);
+                System.out.println(player.money - donkey.price);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(donkey);
                 System.out.println(player.name + " purchased: " + "Donkey " +
@@ -145,7 +145,7 @@ public class Store {
             var name = askName("Pig");
             var pig = new Rabbit().createAnimal(name, askGender(name));
             System.out.println("Budget: ");
-            System.out.println(p.money - pig.price);
+            System.out.println(player.money - pig.price);
             // adds animals to ArrayList
             player.ownedAnimals.add(pig);
             System.out.println(player.name + " purchased: " + "Pig " +
@@ -252,7 +252,7 @@ public class Store {
             var catNood = new CatNoodles().createFood("Cat Noodles");
             int price = nood * catNood.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -261,7 +261,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(catNood);
                 System.out.println(player.name + " bought " + nood + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -276,7 +276,7 @@ public class Store {
             var fish = new Fish().createFood("Fish");
             int price = fishFish * fish.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -286,9 +286,9 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(fish);
-                System.out.println(player.name + " bought " + fish + "kg " + player.ownedFood.get(0).foodName);
+                System.out.println(player.name + " bought " + fishFish + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
 
@@ -301,7 +301,7 @@ public class Store {
             var bananas = new Bananas().createFood("Bananas");
             int price = banana * bananas.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -310,7 +310,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(bananas);
                 System.out.println(player.name + " bought " + banana + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -325,7 +325,7 @@ public class Store {
             var berries = new Berries().createFood("Berries");
             int price = berry * berries.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -334,7 +334,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(berries);
                 System.out.println(player.name + " bought " + berry + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -349,7 +349,7 @@ public class Store {
             var carrots = new Carrot().createFood("Carrot");
             int price = carrot * carrots.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -359,7 +359,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(carrots);
                 System.out.println(player.name + " bought " + carrot + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -374,7 +374,7 @@ public class Store {
             var cucumbers = new Cucumber().createFood("Cucumber");
             int price = cucumber * cucumbers.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -384,7 +384,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(cucumbers);
                 System.out.println(player.name + " bought " + cucumber + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -399,7 +399,7 @@ public class Store {
             var zucchinis = new Zucchini().createFood("Zucchini");
             int price = zucchini * zucchinis.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -408,7 +408,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(zucchinis);
                 System.out.println(player.name + " bought " + zucchini + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -423,7 +423,7 @@ public class Store {
             var melons = new Melons().createFood("Melons");
             int price = melon * melons.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -432,7 +432,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(melons);
                 System.out.println(player.name + " bought " + melon + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -447,7 +447,7 @@ public class Store {
             var pumpkins = new Pumpkin().createFood("Pumpkin");
             int price = pumpkin * pumpkins.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -456,7 +456,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(pumpkins);
                 System.out.println(player.name + " bought " + pumpkin + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -471,7 +471,7 @@ public class Store {
             var grasses = new Grass().createFood("Grass");
             int price = grass * grasses.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -480,7 +480,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(grasses);
                 System.out.println(player.name + " bought " + grass + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -495,7 +495,7 @@ public class Store {
             var pears = new Pear().createFood("Pears");
             int price = pear * pears.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -504,7 +504,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(pears);
                 System.out.println(player.name + " bought " + pear + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -519,7 +519,7 @@ public class Store {
             var apples = new Apples().createFood("Apples");
             int price = apple * apples.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -528,7 +528,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(apples);
                 System.out.println(player.name + " bought " + apple + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -543,7 +543,7 @@ public class Store {
             var sugarBeets = new SugarBeet().createFood("SugarBeet");
             int price = sugarBeet * sugarBeets.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -552,7 +552,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(sugarBeets);
                 System.out.println(player.name + " bought " + sugarBeet + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -567,7 +567,7 @@ public class Store {
             var corns = new Corn().createFood("SugarBeet");
             int price = corn * corns.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -576,7 +576,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(corns);
                 System.out.println(player.name + " bought " + corn + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -591,7 +591,7 @@ public class Store {
             var soybeans = new Soybeans().createFood("Soybeans");
             int price = soybean * soybeans.aFoodPrice;
 
-            if(p.money < price) {
+            if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
@@ -600,7 +600,7 @@ public class Store {
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
 
-                System.out.println(p.money - price);
+                System.out.println(player.money - price);
                 player.ownedFood.add(soybeans);
                 System.out.println(player.name + " bought " + soybean + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
