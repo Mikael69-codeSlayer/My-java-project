@@ -265,11 +265,16 @@ public class Store {
 
         if (playerChoise2 == 1) {
 
-
             askFood("Cat Noodles");
             int nood = scan.nextInt();
-            var catNood = new CatNoodles().createFood("Cat Noodles");
+            var catNood = new CatNoodles().createFood("Cat Noodles", nood);
             int price = nood * catNood.aFoodPrice;
+
+        /*    for(Food food : player.ownedFood) {
+                if(food.getClass().getSimpleName().equals("CatNoodles")) {
+                    food.amount += 1;   // AMOUNT
+                }
+            } */
 
             if(player.money < price) {
                 System.out.println("Not enough money!" +
@@ -277,15 +282,31 @@ public class Store {
                 foodList(player);
             } else {
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(catNood);
+
+                var foundInList = false;
+                for(var food : player.ownedFood){
+                    if(food.foodName.equals("Cat Noodles")){
+                        // There are already  cat noodles in the list of food
+                        // so just add to the amount
+                        food.amount += catNood.amount;
+                        foundInList = true;
+                    }
+                }
+                if(!foundInList) {
+                    // There was no cat noodles in the list
+                    // and cat noodles
+                    player.ownedFood.add(catNood);
+                }
+
+
                 System.out.println(player.name + " bought " + nood + "kg " + player.ownedFood.get(0).foodName);
-                buyMoreFood(player);
+                        buyMoreFood(player);
+
             }
+
 
         }
 
@@ -293,7 +314,7 @@ public class Store {
 
             askFood("Fish");
             int fishFish = scan.nextInt();
-            var fish = new Fish().createFood("Fish");
+            var fish = new Fish().createFood("Fish", fishFish);
             int price = fishFish * fish.aFoodPrice;
 
             if(player.money < price) {
@@ -304,12 +325,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(fish);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Fish")) {
+                        food.amount += fish.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(fish);
+                }
+
                 System.out.println(player.name + " bought " + fishFish + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -320,21 +349,32 @@ public class Store {
 
             askFood("Bananas");
             int banana = scan.nextInt();
-            var bananas = new Bananas().createFood("Bananas");
+            var bananas = new Bananas().createFood("Bananas", banana);
             int price = banana * bananas.aFoodPrice;
 
             if(player.money < price) {
+
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
-            } else {
-                player.money -= price;
 
+            } else {
+
+                player.money -= price;
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(bananas);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Bananas")) {
+                        food.amount += bananas.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(bananas);
+                }
+
                 System.out.println(player.name + " bought " + banana + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -345,21 +385,31 @@ public class Store {
 
             askFood("Berries");
             int berry = scan.nextInt();
-            var berries = new Berries().createFood("Berries");
+            var berries = new Berries().createFood("Berries", berry);
             int price = berry * berries.aFoodPrice;
 
             if(player.money < price) {
                 System.out.println("Not enough money!" +
                         "\nReturning back to Store.....");
                 foodList(player);
-            } else {
-                player.money -= price;
 
+            } else {
+
+                player.money -= price;
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(berries);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Berries")) {
+                        food.amount += berries.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(berries);
+                }
+
                 System.out.println(player.name + " bought " + berry + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -370,7 +420,7 @@ public class Store {
 
             askFood("Carrot");
             int carrot = scan.nextInt();
-            var carrots = new Carrot().createFood("Carrot");
+            var carrots = new Carrot().createFood("Carrot", carrot);
             int price = carrot * carrots.aFoodPrice;
 
             if(player.money < price) {
@@ -380,12 +430,21 @@ public class Store {
 
             } else {
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(carrots);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Carrot")) {
+                        food.amount += carrots.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(carrots);
+                }
+
+
                 System.out.println(player.name + " bought " + carrot + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -396,7 +455,7 @@ public class Store {
 
             askFood("Cucumber");
             int cucumber = scan.nextInt();
-            var cucumbers = new Cucumber().createFood("Cucumber");
+            var cucumbers = new Cucumber().createFood("Cucumber", cucumber);
             int price = cucumber * cucumbers.aFoodPrice;
 
             if(player.money < price) {
@@ -407,12 +466,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(cucumbers);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Berries")) {
+                        food.amount += cucumbers.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(cucumbers);
+                }
+
                 System.out.println(player.name + " bought " + cucumber + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -423,7 +490,7 @@ public class Store {
 
             askFood("Zucchini");
             int zucchini = scan.nextInt();
-            var zucchinis = new Zucchini().createFood("Zucchini");
+            var zucchinis = new Zucchini().createFood("Zucchini", zucchini);
             int price = zucchini * zucchinis.aFoodPrice;
 
             if(player.money < price) {
@@ -432,12 +499,20 @@ public class Store {
                 foodList(player);
             } else {
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(zucchinis);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Berries")) {
+                        food.amount += zucchinis.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(zucchinis);
+                }
+
                 System.out.println(player.name + " bought " + zucchini + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -448,7 +523,7 @@ public class Store {
 
             askFood("Melons");
             int melon = scan.nextInt();
-            var melons = new Melons().createFood("Melons");
+            var melons = new Melons().createFood("Melons", melon);
             int price = melon * melons.aFoodPrice;
 
             if(player.money < price) {
@@ -460,9 +535,18 @@ public class Store {
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(melons);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Melons")) {
+                        food.amount += melons.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(melons);
+                }
+
                 System.out.println(player.name + " bought " + melon + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -473,7 +557,7 @@ public class Store {
 
             askFood("Pumpkin");
             int pumpkin = scan.nextInt();
-            var pumpkins = new Pumpkin().createFood("Pumpkin");
+            var pumpkins = new Pumpkin().createFood("Pumpkin", pumpkin);
             int price = pumpkin * pumpkins.aFoodPrice;
 
             if(player.money < price) {
@@ -483,12 +567,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(pumpkins);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Pumpkin")) {
+                        food.amount += pumpkins.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(pumpkins);
+                }
+
                 System.out.println(player.name + " bought " + pumpkin + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -499,7 +591,7 @@ public class Store {
 
             askFood("Grass");
             int grass = scan.nextInt();
-            var grasses = new Grass().createFood("Grass");
+            var grasses = new Grass().createFood("Grass", grass);
             int price = grass * grasses.aFoodPrice;
 
             if(player.money < price) {
@@ -509,12 +601,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(grasses);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Grass")) {
+                        food.amount += grasses.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(grasses);
+                }
+
                 System.out.println(player.name + " bought " + grass + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -525,7 +625,7 @@ public class Store {
 
             askFood("Pear");
             int pear = scan.nextInt();
-            var pears = new Pear().createFood("Pears");
+            var pears = new Pear().createFood("Pears", pear);
             int price = pear * pears.aFoodPrice;
 
             if(player.money < price) {
@@ -535,11 +635,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Pears")) {
+                        food.amount += pears.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(pears);
+                }
+
                 player.ownedFood.add(pears);
                 System.out.println(player.name + " bought " + pear + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
@@ -551,7 +660,7 @@ public class Store {
 
             askFood("Apples");
             int apple = scan.nextInt();
-            var apples = new Apples().createFood("Apples");
+            var apples = new Apples().createFood("Apples", apple);
             int price = apple * apples.aFoodPrice;
 
             if(player.money < price) {
@@ -564,9 +673,18 @@ public class Store {
 
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(apples);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Apples")) {
+                        food.amount += apples.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(apples);
+                }
+
                 System.out.println(player.name + " bought " + apple + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -577,7 +695,7 @@ public class Store {
 
             askFood("SugarBeet");
             int sugarBeet = scan.nextInt();
-            var sugarBeets = new SugarBeet().createFood("SugarBeet");
+            var sugarBeets = new SugarBeet().createFood("SugarBeet", sugarBeet);
             int price = sugarBeet * sugarBeets.aFoodPrice;
 
             if(player.money < price) {
@@ -587,12 +705,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(sugarBeets);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("SugarBeet")) {
+                        food.amount += sugarBeets.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(sugarBeets);
+                }
+
                 System.out.println(player.name + " bought " + sugarBeet + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -603,7 +729,7 @@ public class Store {
 
             askFood("Corn");
             int corn = scan.nextInt();
-            var corns = new Corn().createFood("SugarBeet");
+            var corns = new Corn().createFood("Corn", corn);
             int price = corn * corns.aFoodPrice;
 
             if(player.money < price) {
@@ -613,12 +739,20 @@ public class Store {
             } else {
 
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(corns);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Corn")) {
+                        food.amount += corns.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(corns);
+                }
+
                 System.out.println(player.name + " bought " + corn + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
@@ -629,7 +763,7 @@ public class Store {
 
             askFood("Soybeans");
             int soybean = scan.nextInt();
-            var soybeans = new Soybeans().createFood("Soybeans");
+            var soybeans = new Soybeans().createFood("Soybeans", soybean);
             int price = soybean * soybeans.aFoodPrice;
 
             if(player.money < price) {
@@ -638,12 +772,20 @@ public class Store {
                 foodList(player);
             } else {
                 player.money -= price;
-
                 System.out.println("Price: " + price);
                 System.out.println("Budget: ");
-
                 System.out.println(player.money);
-                player.ownedFood.add(soybeans);
+
+                var foundInList = false;
+                for(var food : player.ownedFood) {
+                    if(food.foodName.equals("Berries")) {
+                        food.amount += soybeans.amount;
+                        foundInList = true;
+                    }
+                } if(!foundInList) {
+                    player.ownedFood.add(soybeans);
+                }
+
                 System.out.println(player.name + " bought " + soybean + "kg " + player.ownedFood.get(0).foodName);
                 buyMoreFood(player);
             }
