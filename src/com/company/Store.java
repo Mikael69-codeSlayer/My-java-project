@@ -246,7 +246,7 @@ public class Store {
                 "\n10. Grass. Price: 20kr/kg");
 
         System.out.println("\n======== DONKEY FOOD ========");
-        System.out.println("11. Carrots. Price: 20kr/kg" +
+        System.out.println("11. Pears. Price: 20kr/kg" +
                 "\n12. Apples. Price: 35kr/kg" +
                 "\n13. SugarBeet. Price: 10kr/kg");
 
@@ -293,17 +293,35 @@ public class Store {
                         // so just add to the amount
                         food.amount += catNood.amount;
                         foundInList = true;
+
+                        // delete later
+
                     }
                 }
                 if(!foundInList) {
+
                     // There was no cat noodles in the list
                     // and cat noodles
                     player.ownedFood.add(catNood);
                 }
 
 
-                System.out.println(player.name + " bought " + nood + "kg " + player.ownedFood.get(0).foodName);
-                        buyMoreFood(player);
+               /* for(var x : player.ownedFood) {
+                    System.out.println(player.name + " bought " + x.foodName + " " + nood + "kg");
+                    buyMoreFood(player);
+                } */
+
+              //  System.out.println(player.name + " bought " + nood + "kg " + player.ownedFood.get(0).foodName);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+                    //+ " " + food.amount + "kg");
+
+                }
+                    buyMoreFood(player);
+
+
+
 
             }
 
@@ -339,8 +357,23 @@ public class Store {
                     player.ownedFood.add(fish);
                 }
 
-                System.out.println(player.name + " bought " + fishFish + "kg " + player.ownedFood.get(0).foodName);
+               /* for(var x : player.ownedFood) {
+                    System.out.println(player.name + " bought " + x.foodName + " " + fishFish + "kg");
+
+                } */
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+                            //+ " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
+
+
+
+
+               /* System.out.println(player.name + " bought " + fishFish + "kg " + player.ownedFood.get(0).foodName);
+                buyMoreFood(player); */
             }
 
         }
@@ -375,8 +408,16 @@ public class Store {
                     player.ownedFood.add(bananas);
                 }
 
-                System.out.println(player.name + " bought " + banana + "kg " + player.ownedFood.get(0).foodName);
+
+              //  System.out.println(player.name + " bought " + banana + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
+
             }
 
         }
@@ -410,8 +451,16 @@ public class Store {
                     player.ownedFood.add(berries);
                 }
 
-                System.out.println(player.name + " bought " + berry + "kg " + player.ownedFood.get(0).foodName);
+
+               // System.out.println(player.name + " bought " + berry + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
+
             }
 
         }
@@ -445,7 +494,14 @@ public class Store {
                 }
 
 
-                System.out.println(player.name + " bought " + carrot + "kg " + player.ownedFood.get(0).foodName);
+               // System.out.println(player.name + " bought " + carrot + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -472,7 +528,7 @@ public class Store {
 
                 var foundInList = false;
                 for(var food : player.ownedFood) {
-                    if(food.foodName.equals("Berries")) {
+                    if(food.foodName.equals("Cucumber")) {
                         food.amount += cucumbers.amount;
                         foundInList = true;
                     }
@@ -480,7 +536,13 @@ public class Store {
                     player.ownedFood.add(cucumbers);
                 }
 
-                System.out.println(player.name + " bought " + cucumber + "kg " + player.ownedFood.get(0).foodName);
+               // System.out.println(player.name + " bought " + cucumber + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -505,7 +567,7 @@ public class Store {
 
                 var foundInList = false;
                 for(var food : player.ownedFood) {
-                    if(food.foodName.equals("Berries")) {
+                    if(food.foodName.equals("Zucchini")) {
                         food.amount += zucchinis.amount;
                         foundInList = true;
                     }
@@ -513,7 +575,13 @@ public class Store {
                     player.ownedFood.add(zucchinis);
                 }
 
-                System.out.println(player.name + " bought " + zucchini + "kg " + player.ownedFood.get(0).foodName);
+              //  System.out.println(player.name + " bought " + zucchini + "kg " + player.ownedFood.get(0).foodName);
+             //   buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -547,7 +615,13 @@ public class Store {
                     player.ownedFood.add(melons);
                 }
 
-                System.out.println(player.name + " bought " + melon + "kg " + player.ownedFood.get(0).foodName);
+               // System.out.println(player.name + " bought " + melon + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -581,8 +655,16 @@ public class Store {
                     player.ownedFood.add(pumpkins);
                 }
 
-                System.out.println(player.name + " bought " + pumpkin + "kg " + player.ownedFood.get(0).foodName);
+           //     System.out.println(player.name + " bought " + pumpkin + "kg " + player.ownedFood.get(0).foodName);
+             //   buyMoreFood(player);
+
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
+
             }
 
         }
@@ -615,7 +697,13 @@ public class Store {
                     player.ownedFood.add(grasses);
                 }
 
-                System.out.println(player.name + " bought " + grass + "kg " + player.ownedFood.get(0).foodName);
+               // System.out.println(player.name + " bought " + grass + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -649,9 +737,16 @@ public class Store {
                     player.ownedFood.add(pears);
                 }
 
-                player.ownedFood.add(pears);
-                System.out.println(player.name + " bought " + pear + "kg " + player.ownedFood.get(0).foodName);
+
+              //  System.out.println(player.name + " bought " + pear + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
+
             }
 
         }
@@ -685,7 +780,13 @@ public class Store {
                     player.ownedFood.add(apples);
                 }
 
-                System.out.println(player.name + " bought " + apple + "kg " + player.ownedFood.get(0).foodName);
+              //  System.out.println(player.name + " bought " + apple + "kg " + player.ownedFood.get(0).foodName);
+              //  buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -719,7 +820,13 @@ public class Store {
                     player.ownedFood.add(sugarBeets);
                 }
 
-                System.out.println(player.name + " bought " + sugarBeet + "kg " + player.ownedFood.get(0).foodName);
+             //   System.out.println(player.name + " bought " + sugarBeet + "kg " + player.ownedFood.get(0).foodName);
+             //   buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -753,7 +860,13 @@ public class Store {
                     player.ownedFood.add(corns);
                 }
 
-                System.out.println(player.name + " bought " + corn + "kg " + player.ownedFood.get(0).foodName);
+               // System.out.println(player.name + " bought " + corn + "kg " + player.ownedFood.get(0).foodName);
+               // buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 
@@ -778,7 +891,7 @@ public class Store {
 
                 var foundInList = false;
                 for(var food : player.ownedFood) {
-                    if(food.foodName.equals("Berries")) {
+                    if(food.foodName.equals("Soybeans")) {
                         food.amount += soybeans.amount;
                         foundInList = true;
                     }
@@ -786,7 +899,13 @@ public class Store {
                     player.ownedFood.add(soybeans);
                 }
 
-                System.out.println(player.name + " bought " + soybean + "kg " + player.ownedFood.get(0).foodName);
+             //   System.out.println(player.name + " bought " + soybean + "kg " + player.ownedFood.get(0).foodName);
+             //   buyMoreFood(player);
+
+                for(var food : player.ownedFood) {
+                    System.out.println(food.foodName + " " + food.amount + "kg");
+
+                }
                 buyMoreFood(player);
             }
 

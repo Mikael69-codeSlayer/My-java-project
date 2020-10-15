@@ -44,22 +44,56 @@ public class Player {
     public void giveFood() {
 
         if(ownedFood.size() > 0) {
-            System.out.println("Choose animal you want to feed (enter type) :  ");
             myAnimals();
+            System.out.println("Choose animal you want to feed (enter type) :  ");
             String feed = scan.next();
-            String feed2 = scan.next();
+
+            // om det finns mat -> välj djur -> välj mat -> välj antal kg -> djur äter och ökar i hp
+
+            // En metod som räknar ut hur mycket mat
+            // du vill ge samt ger djuret rätt hp mängd som motsvarar hur mycket kg du angav
 
             if(feed.equalsIgnoreCase("cat")) {
-                System.out.println("Your cat can eat: \"CatNoodles\", \"Fish\", \"Bananas\", \"Berries\"");
+                System.out.println("Your cat can eat: \"1. Cat Noodles\", \"2. Fish\"," +
+                        " \"3. Bananas\", \"4. Berries\"");
                 System.out.println("You have: ");
                 myFood();
 
                 System.out.println("Choose food: ");
-                if(feed2.equalsIgnoreCase("catnoodles"))
+                int feed2 = scan.nextInt();
+
+                String[] foodTypes = { "Cat Noodles", "Fish", "Bananas", " Berries"};
+                var chosenFood = foodTypes[feed2 - 1];
+
+                var howMuch = howMuchFood();
+
+                for(var food : ownedFood) {
+                    if(food.foodName.equals(chosenFood)) {
+                        food.amount -= howMuch;
+                        System.out.println("Food left: " + food.amount);
+
+                    }
 
 
-                System.out.println("How many kg?: ");
-                int kgFood = scan.nextInt();
+                }
+
+                   // howMuchFood();
+
+
+
+
+
+
+                /*     System.out.println("How many kg?");
+                    int kg = scan.nextInt();
+                    if(kg == 1) {
+                        for(var animal : ownedAnimals) {
+                            animal.healthPoints += 10;
+                            System.out.println(animal.healthPoints);
+                        }
+                    } */
+
+
 
 
             }
@@ -68,6 +102,57 @@ public class Player {
             System.out.println("You have no food!");
             g.mainMenu();
         }
+
+
+
+    }
+
+    public int howMuchFood() {
+        // En metod som räknar ut hur mycket mat
+        // du vill ge samt ger djuret rätt hp mängd som motsvarar hur mycket kg du angav
+
+        System.out.println("How many kg?");
+        int giveFood = scan.nextInt();
+
+        for(var food : ownedFood) {
+
+            if(food.amount < giveFood) {
+                System.out.println("try again");
+                howMuchFood();
+
+            } else {
+                int healthIncrease = 10;
+                int hp = giveFood + healthIncrease;
+
+                // 1kg food -> +10 hp
+                for(var animal : ownedAnimals) {
+
+                    animal.healthPoints += hp;
+                    System.out.println(animal.type
+                                       + " "
+                                       + animal.animalName
+                                       + ", "
+                                       + "Health: "
+                                       + animal.healthPoints);
+                }
+            }
+        }
+
+        return giveFood;
+      /*  int healthIncrease = 10;
+        int hp = giveFood + healthIncrease;
+
+        // 1kg food -> +10 hp
+        for(var animal : ownedAnimals) {
+
+                animal.healthPoints += hp;
+                System.out.println(animal.type
+                        + " "
+                        + animal.animalName
+                        + ", "
+                        + "Health: "
+                        + animal.healthPoints);
+        } */
 
     }
 
