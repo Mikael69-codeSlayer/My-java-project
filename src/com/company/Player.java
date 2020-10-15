@@ -33,6 +33,7 @@ public class Player {
                animal.healthPoints -= randomNumber;
            }
         }
+        notAlive();
     }
     public void myFood() {
         for(var food : ownedFood) {
@@ -154,6 +155,15 @@ public class Player {
                         + animal.healthPoints);
         } */
 
+    }
+
+    public void notAlive() {
+        for(var animal : ownedAnimals) {
+            if(animal.healthPoints <= 0) {
+                ownedAnimals.remove(animal);
+                System.out.println("The " + animal.type + " " + animal.animalName + " died");
+            }
+        }
     }
 
 
