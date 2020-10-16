@@ -149,7 +149,6 @@ public class Game {
 
     protected void mainMenu() {
         for (var i = 1; i <= gameRounds; i++) {
-
             for (var player : players) {
 
                 System.out.println("===== MAIN MENU =====");
@@ -164,16 +163,19 @@ public class Game {
                 System.out.println("1. Buy animal" +
                         "\n2. Buy food" +
                         "\n3. Feed animal" +
-                        "\n4. Birth new animal" +
-                        "\n5. Sell animal" +
-                        "\n6. Show animals" +
-                        "\n7. Show food" +
+                        "\n4. Mate animals" +
+                        "\n5. Birth new animal" +
+                        "\n6. Sell animal" +
+                        "\n7. Show animals" +
+                        "\n8. Show food" +
 
 
-                        "\n\n8. Exit to Start Menu");
+                        "\n\n9. Exit to Start Menu");
 
                 playerChoice(player);
 
+
+                playerLost();
             }
 
         }
@@ -187,18 +189,49 @@ public class Game {
         // Buy animal
         if(pChoice == 1) {
             s.sellAnimals(player);
+
         } else if (pChoice == 2) {
             s.foodList(player);
+
+        } else if(pChoice == 3) {
+
+           player.giveFood();
+
+            /*System.out.println("Which animal you want to feed? (animal type) : ");
+            player.myAnimals();
+
+            String feed = scan.next();
+            if(feed.equalsIgnoreCase("cat")) {
+                System.out.println("Your cat can eat: \"CatNoodles\", \"Fish\", \"Bananas\", \"Berries\"");
+
+
+
+
+            } else if(feed.equalsIgnoreCase("rabbit")) {
+                System.out.println("Your rabbit can eat: \"Carrot\", \"Cucumber\", \"Zucchini\"");
+
+            } else if(feed.equalsIgnoreCase("horse")) {
+                System.out.println("Your horse can eat:  \"Melons\", \"Pumpkin\", \"Grass\"");
+
+            } else if(feed.equalsIgnoreCase("donkey")) {
+                System.out.println("Your donkey can eat: \"Pear\", \"Apples\", \"SugarBeet\"");
+
+            } else if(feed.equalsIgnoreCase("pig")) {
+                System.out.println("Your pig can eat: \"Corn\", \"Soybeans\"");
+            } */
+
+
         }
-         else if(pChoice == 6) {
+         else if(pChoice == 7) {
             System.out.println("Your animals:");
             player.myAnimals();
         }
-         else if(pChoice == 7) {
+         else if(pChoice == 8) {
+            System.out.println("Your food: ");
              player.myFood();
         }
 
-        else if (pChoice == 8) {
+        else if (pChoice == 9) {
             System.out.println("----> back to Start Menu");
             gameStart();
         }
@@ -208,6 +241,17 @@ public class Game {
             mainMenu();
         }
     }
+
+    // End the game if player have 0 money and no animals
+    public void playerLost(){
+        for(var player : players) {
+            if(player.money <= 0 || player.ownedAnimals.size() <= 0) {
+                System.out.println(player.name + " lost :(");
+                players.remove(player);
+            }
+        }
+    }
+
 
 
 }
