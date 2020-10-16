@@ -245,10 +245,15 @@ public class Game {
     // End the game if player have 0 money and no animals
     public void playerLost(){
         for(var player : players) {
-            if(player.money <= 0 || player.ownedAnimals.size() <= 0) {
+            if(player.money <= 0) {
                 System.out.println(player.name + " lost :(");
                 players.remove(player);
             }
+
+            // to Fix later
+            //(player.ownedAnimals.size() == 0)
+
+
         }
     }
 

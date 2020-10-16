@@ -34,6 +34,8 @@ public class Player {
            }
         }
         notAlive();
+
+
     }
     public void myFood() {
         for(var food : ownedFood) {
@@ -46,7 +48,10 @@ public class Player {
 
         if(ownedFood.size() > 0) {
             myAnimals();
+
             System.out.println("Choose animal you want to feed (enter type) :  ");
+
+
             String feed = scan.next();
 
 
@@ -57,8 +62,10 @@ public class Player {
         Only chosen animal's hp can increase
         if player choose animal 1 (or type animal's name) --> do this
         else -> ....
+
          */
-                       System.out.println("Your cat can eat: \"1. Cat Noodles\", \"2. Fish\"," +
+
+                        System.out.println("Your cats can eat: \"1. Cat Noodles\", \"2. Fish\"," +
                                 " \"3. Bananas\", \"4. Berries\"");
                         System.out.println("You have: ");
                         myFood();
@@ -86,6 +93,8 @@ public class Player {
 
 
 
+
+
                 /*     System.out.println("How many kg?");
                     int kg = scan.nextInt();
                     if(kg == 1) {
@@ -96,6 +105,7 @@ public class Player {
                     } */
 
 
+
             }
 
            else if(feed.equalsIgnoreCase("Rabbit")) {
@@ -103,7 +113,7 @@ public class Player {
                 System.out.println("You have:");
                 myFood();
 
-                System.out.println("Choose food: ");
+                System.out.println("Choose food:");
                 int feed2 = scan.nextInt();
                 String[] foodTypes = {"Carrot", "Cucumber", "Zucchini"};
                 var chosenFood = foodTypes[feed2 - 1];
@@ -117,6 +127,26 @@ public class Player {
 
                     }
 
+                }
+            }
+
+           else if(feed.equalsIgnoreCase("Horse")) {
+                System.out.println("Your horse can eat: \"1. Melons\", \"2. Pumpkin\", \"3. Grass\"");
+                System.out.println("You have:");
+                myFood();
+
+                System.out.println("Choose food:");
+                int feed2 = scan.nextInt();
+                String[] foodTypes = {"Melons", "Pumpkin", "Grass"};
+                var chosenFood = foodTypes[feed2 - 1];
+
+                var howMuch = howMuchFood();
+                for (var food : ownedFood) {
+                    if (food.foodName.equals(chosenFood)) {
+                        food.amount -= howMuch;
+                        System.out.println("Food left: " + food.amount + "kg");
+
+                    }
                 }
             }
 
@@ -141,6 +171,7 @@ public class Player {
                 howMuchFood();
 
             } else {
+
                 int healthIncrease = 10;
                 int hp = giveFood + healthIncrease;
 
@@ -155,8 +186,11 @@ public class Player {
                                        + "Health: "
                                        + animal.healthPoints);
                 }
+
+
             }
         }
+
 
         return giveFood;
       /*  int healthIncrease = 10;
@@ -177,14 +211,31 @@ public class Player {
     }
 
 
+
     public void notAlive() {
         for(var animal : ownedAnimals) {
             if(animal.healthPoints <= 0) {
                 ownedAnimals.remove(animal);
                 System.out.println("The " + animal.type + " " + animal.animalName + " died");
+
             }
+
         }
     }
+
+
+
+    // Fix it later
+
+   /* public void tooMuch() {
+        for(var animal : ownedAnimals) {
+            if(animal.healthPoints <= 100) {
+                System.out.println("Your " + animal.type + " " + animal.animalName
+                + " have already 100 hp ");
+            }
+        }
+    } */
+
 
 
 
