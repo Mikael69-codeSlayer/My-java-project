@@ -137,6 +137,7 @@ public class Player {
 
                 System.out.println("Choose food:");
                 int feed2 = scan.nextInt();
+
                 String[] foodTypes = {"Melons", "Pumpkin", "Grass"};
                 var chosenFood = foodTypes[feed2 - 1];
 
@@ -149,6 +150,27 @@ public class Player {
                     }
                 }
             }
+           else if(feed.equalsIgnoreCase("Donkey")) {
+                System.out.println("Your Donkey can eat: \"Pear\", \"Apples\", \"SugarBeet\"");
+                System.out.println("You have:");
+                myFood();
+
+                System.out.println("Choose food:");
+                int feed2 = scan.nextInt();
+
+                String[] foodTypes = {"Pear", "Apples", "SugarBeet"};
+                var chosenFood = foodTypes[feed2 - 1];
+
+                var howMuch = howMuchFood();
+                for (var food : ownedFood) {
+                    if (food.foodName.equals(chosenFood)) {
+                        food.amount -= howMuch;
+                        System.out.println("Food left: " + food.amount + "kg");
+
+                    }
+                }
+            }
+
 
         } else  {
             System.out.println("You have no food!");
