@@ -49,39 +49,40 @@ public class Player {
             System.out.println("Choose animal you want to feed (enter type) :  ");
             String feed = scan.next();
 
-            // om det finns mat -> välj djur -> välj mat -> välj antal kg -> djur äter och ökar i hp
-
-            // En metod som räknar ut hur mycket mat
-            // du vill ge samt ger djuret rätt hp mängd som motsvarar hur mycket kg du angav
-
-            if(feed.equalsIgnoreCase("cat")) {
-                System.out.println("Your cat can eat: \"1. Cat Noodles\", \"2. Fish\"," +
-                        " \"3. Bananas\", \"4. Berries\"");
-                System.out.println("You have: ");
-                myFood();
-
-                System.out.println("Choose food: ");
-                int feed2 = scan.nextInt();
-
-                String[] foodTypes = { "Cat Noodles", "Fish", "Bananas", " Berries"};
-                var chosenFood = foodTypes[feed2 - 1];
-
-                var howMuch = howMuchFood();
-
-                for(var food : ownedFood) {
-                    if(food.foodName.equals(chosenFood)) {
-                        food.amount -= howMuch;
-                        System.out.println("Food left: " + food.amount);
-
-                    }
 
 
-                }
+            if(feed.equalsIgnoreCase("Cat")) {
+                 /*
+        Choose between 2 or more animals
+        Only chosen animal's hp can increase
+        if player choose animal 1 (or type animal's name) --> do this
+        else -> ....
+         */
+                       System.out.println("Your cat can eat: \"1. Cat Noodles\", \"2. Fish\"," +
+                                " \"3. Bananas\", \"4. Berries\"");
+                        System.out.println("You have: ");
+                        myFood();
 
-                   // howMuchFood();
+
+                        System.out.println("Choose food: ");
+                        int feed2 = scan.nextInt();
+
+                        String[] foodTypes = {"Cat Noodles", "Fish", "Bananas", " Berries"};
+                        var chosenFood = foodTypes[feed2 - 1];
+
+                        var howMuch = howMuchFood();
+
+                        for (var food : ownedFood) {
+                            if (food.foodName.equals(chosenFood)) {
+                                food.amount -= howMuch;
+                                System.out.println("Food left: " + food.amount + "kg");
+
+                            }
 
 
+                        }
 
+                        // howMuchFood();
 
 
 
@@ -95,8 +96,28 @@ public class Player {
                     } */
 
 
+            }
 
+           else if(feed.equalsIgnoreCase("Rabbit")) {
+                System.out.println("Your rabbit can eat: \"1. Carrot\", \"2. Cucumber\", \"3. Zucchini\"");
+                System.out.println("You have:");
+                myFood();
 
+                System.out.println("Choose food: ");
+                int feed2 = scan.nextInt();
+                String[] foodTypes = {"Carrot", "Cucumber", "Zucchini"};
+                var chosenFood = foodTypes[feed2 - 1];
+
+                var howMuch = howMuchFood();
+
+                for (var food : ownedFood) {
+                    if (food.foodName.equals(chosenFood)) {
+                        food.amount -= howMuch;
+                        System.out.println("Food left: " + food.amount + "kg");
+
+                    }
+
+                }
             }
 
         } else  {
@@ -109,8 +130,6 @@ public class Player {
     }
 
     public int howMuchFood() {
-        // En metod som räknar ut hur mycket mat
-        // du vill ge samt ger djuret rätt hp mängd som motsvarar hur mycket kg du angav
 
         System.out.println("How many kg?");
         int giveFood = scan.nextInt();
@@ -157,6 +176,7 @@ public class Player {
 
     }
 
+
     public void notAlive() {
         for(var animal : ownedAnimals) {
             if(animal.healthPoints <= 0) {
@@ -180,22 +200,7 @@ public class Player {
     } */
 }
 
-   // public void buyAnAnimal() {
 
-        // fråga vilken typ
-        // fråga vilket kön
-
-        // kolla om tillräckligt med pengar för djurets pris
-        // annars säg "går inte"
-
-        // skapa ett nytt djur av rätt djurklass
-        // lägg till djuret i animals-listan
-
-        // ska denna kod ligga här? eller ska store-klassen göra något?
-   // }
-
-
- //   }
 
 
 
