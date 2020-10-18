@@ -241,20 +241,19 @@ public class Player {
                 ownedAnimals.remove(animal);
                 System.out.println("The " + animal.type + " " + animal.animalName + " died");
 
+
             }
+            // tried g.mainMenu(); Didn't work :( .....
 
         }
     }
 
     public void mateAnimals() {
 
-        if(ownedAnimals.size() < 2) {
+        if (ownedAnimals.size() < 2) {
             System.out.println("You need to buy 2 animals [male and female]");
-        }
-
-
-        else {
-           // System.out.println("=========================  Your list  ==========================");
+        } else {
+            // System.out.println("=========================  Your list  ==========================");
             myAnimals();
             System.out.println("------------------_______________________---------------------");
             System.out.println("Which animals do you want to mate?" +
@@ -267,54 +266,96 @@ public class Player {
                     "\n\n6. ---> MAIN MENU");
 
             int mateAnimal = scan.nextInt();
-            if(mateAnimal == 1) {
+            if (mateAnimal == 1) {
                 System.out.println("Let's make some kittens!");
-              //  int x = (int) (Math.random() * 50);
-                String answer = scan.next();
-                if(answer.equalsIgnoreCase("YES")) {
+                //  int x = (int) (Math.random() * 50);
 
-                    var random = (int)(Math.random()*(2));
-                  //  var genderRandom = (int)(Math.random()*(2));
-                    if(random == 0) {
-                        System.out.println("---> no kittens :( <---");
-                        mateAnimals();
-                        // System.out.println("Nice! You got new kitten!");
-                       // ownedAnimals.add(new Cat());
-                    }
-                    else {
-                        System.out.println("Nice! You got new kitten!");
+                System.out.println("Choose a male cat [type name]");
+                var maleCat = scan.next();
 
-                        System.out.println("\nName your newborn kitten: ");
-                        var catName = scan.next();
+                System.out.println("Choose a female cat [type name]");
+                var femaleCat = scan.next();
 
-                        var catGender = (int)(Math.random()*(2));
-                        if(catGender == 0) {
-                           var catSex = "male";
-                            var cat = new Cat().createAnimal(catName, catSex);
-                            ownedAnimals.add(cat);
+                for (var animal : ownedAnimals) {
 
-                        } else  {
-                            var catSex = "female";
-                            var cat = new Cat().createAnimal(catName, catSex);
-                            ownedAnimals.add(cat);
+                    if (maleCat.equalsIgnoreCase(animal.animalName) ||
+                    femaleCat.equalsIgnoreCase(animal.animalName)) {
+
+
+
+
+
+
+
+                    /*if(answer == 1) {
+                        System.out.println("Which male cat?");
+                        var answer2 = scan.next();
+                         if(answer2.contains(animal.animalName)) {
+                             System.out.println("Which female cat?");
+                              answer2 = scan.next();
+                              if(answer2.contains(animal.animalName)) {
+                                  System.out.println("Let's see if we'll get some kittens!");
+                              } else {
+                                  System.out.println("Error");
+                                 // mateAnimals();
+                              }
+                         } */
+
+                        //(answer.equalsIgnoreCase("male" + animal.animalName)) {
+
+
+                        var random = (int) (Math.random() * (2));
+                        //  var genderRandom = (int)(Math.random()*(2));
+                        if (random == 0) {
+                            System.out.println("---> no kittens :( <---");
+                            mateAnimals();
+                            // System.out.println("Nice! You got new kitten!");
+                            // ownedAnimals.add(new Cat());
+                        } else {
+                            System.out.println("Nice! You got new kitten!");
+
+                            System.out.println("\nName your newborn kitten: ");
+                            var catName = scan.next();
+
+                            var catGender = (int) (Math.random() * (2));
+                            if (catGender == 0) {
+                                var catSex = "male";
+                                var cat = new Cat().createAnimal(catName, catSex);
+                                ownedAnimals.add(cat);
+
+                            } else {
+                                var catSex = "female";
+                                var cat = new Cat().createAnimal(catName, catSex);
+                                ownedAnimals.add(cat);
+                            }
+
+
+                            // var cat = new Cat().createAnimal(catName, );
+
+                            myAnimals();
+                            // System.out.println("Name your newborn kitten: ");
+
+
                         }
 
-
-                       // var cat = new Cat().createAnimal(catName, );
-
-                        myAnimals();
-                       // System.out.println("Name your newborn kitten: ");
-
-
+                    } else {
+                        System.out.println("Wrong name/gender");
+                        mateAnimals();
                     }
 
                 }
-            }
 
+            }
         }
 
     }
+
 }
+
+
+
+
+
 
            // (ownedAnimals.size() <= 0) {
              //   System.out.println("You need to buy animals [2]");
