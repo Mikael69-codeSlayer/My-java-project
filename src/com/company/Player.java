@@ -350,6 +350,57 @@ public class Player {
 
     }
 
+    public void sellAnimal() {
+
+       if(ownedAnimals.size() <= 0) {
+           System.out.println("You have no animals.");
+           g.mainMenu();
+
+       } else {
+
+           myAnimals();
+           System.out.println("Which animal you want to sell?");
+
+           System.out.println("-----------------------------------------");
+
+           System.out.println("Type a name: ");
+           var sell = scan.next();
+
+           for(var animal : ownedAnimals) {
+               if (sell.equalsIgnoreCase(animal.animalName)) {
+
+                   System.out.println("Price for your animal: ");
+                   int price = animal.price * animal.healthPoints;
+                   System.out.println(price);
+
+                   System.out.println("Are you sure that you want to sell this animal?");
+                   var yesNo = scan.next();
+
+                   if(yesNo.equalsIgnoreCase("yes")) {
+                       ownedAnimals.remove(animal);
+                       int budget = money + price;
+                       System.out.println("You sold " + animal.animalName + " " + animal.type
+                       + " and got +" + price);
+                       System.out.println("---------------------------------------");
+                       System.out.println("Your budget now: " + budget);
+
+                   }
+
+
+
+               }
+           }
+
+
+
+       }
+
+
+
+    }
+
+
+
 }
 
 
