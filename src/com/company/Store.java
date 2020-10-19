@@ -219,13 +219,25 @@ public class Store {
             } else {
                 player.money -= pig.price;
 
-                System.out.println("Budget: ");
-                System.out.println(player.money);
+                System.out.println("Budget: " + player.money);
+                System.out.println("===============");
                 // adds animals to ArrayList
                 player.ownedAnimals.add(pig);
-                System.out.println(player.name + " purchased: " + "Pig " +
+
+
+                /*   System.out.println(player.name + " purchased: " + "Pig " +
                         player.ownedAnimals.get(0).animalName +
-                        ", Health: " + pig.healthPoints);
+                        ", Health: " + pig.healthPoints); */
+
+                for(var animal : player.ownedAnimals) {
+                    System.out.println(player.name + " bought "
+                            + animal.type + " "
+                            + animal.animalName + ", gender: "
+                            + animal.animalGender + ", Health: "
+                            + animal.healthPoints);
+                    System.out.println("--------------------------------------------------------------");
+                }
+
                 buyMoreAnimals(player);
             }
         }
