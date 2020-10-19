@@ -49,8 +49,10 @@ public class Store {
                 // Subtract the cat.price from player.money
                 player.money -= cat.price;
 
-                System.out.println("\nBudget: ");
-                System.out.println(player.money);
+                System.out.println("\nBudget: " + player.money);
+                System.out.println("===============");
+
+                // System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(cat);
 
@@ -64,7 +66,7 @@ public class Store {
                             + animal.animalName + ", gender: "
                             + animal.animalGender + ", Health: "
                             + animal.healthPoints);
-                    System.out.println("------------------------------------------------------------");
+                    System.out.println("-----------------------------------------------------------");
                 }
 
 
@@ -90,8 +92,10 @@ public class Store {
             else {
                 player.money -= rabbit.price;
 
-                System.out.println("Budget: ");
-                System.out.println(player.money);
+                System.out.println("\nBudget: " + player.money);
+                System.out.println("===============");
+               //
+                // System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(rabbit);
 
@@ -106,7 +110,7 @@ public class Store {
                             + animal.animalName + ", gender: "
                             + animal.animalGender + ", Health: "
                             + animal.healthPoints);
-                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("--------------------------------------------------------------");
                 }
 
 
@@ -131,13 +135,27 @@ public class Store {
             else {
                 player.money -= horse.price;
 
-                System.out.println("Budget: ");
-                System.out.println(player.money);
+                System.out.println("\nBudget: " + player.money);
+                System.out.println("===============");
+
+                //System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(horse);
-                System.out.println(player.name + " purchased: " + "Horse " +
+
+               /* System.out.println(player.name + " purchased: " + "Horse " +
                         player.ownedAnimals.get(0).animalName +
-                        ", Health: " + horse.healthPoints);
+                        ", Health: " + horse.healthPoints); */
+
+                for(var animal : player.ownedAnimals) {
+                    System.out.println(player.name + " bought "
+                            + animal.type + " "
+                            + animal.animalName + ", gender: "
+                            + animal.animalGender + ", Health: "
+                            + animal.healthPoints);
+                    System.out.println("--------------------------------------------------------------");
+                }
+
+
                 buyMoreAnimals(player);
             }
 
@@ -163,9 +181,13 @@ public class Store {
                 System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(donkey);
-                System.out.println(player.name + " purchased: " + "Donkey " +
+
+
+              /*  System.out.println(player.name + " purchased: " + "Donkey " +
                         player.ownedAnimals.get(0).animalName +
-                        ", Health: " + donkey.healthPoints);
+                        ", Health: " + donkey.healthPoints); */
+
+
                 buyMoreAnimals(player);
             }
 
