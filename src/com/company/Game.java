@@ -14,9 +14,11 @@ public class Game {
     // My "start" method
     protected void gameStart() {
         // Menu:  start - end
-        System.out.println("===== Start Menu =====");
-        System.out.println("1. Start a new game" +
-                "\n2. Exit");
+        System.out.println("\n======= Start Menu ======");
+        System.out.println("|| 1. Start a new game ||" +
+                         "\n|| 2. Exit             ||" +
+                         "\n=========================");
+
             // try catch. If you enter words/letters
         // It will throw an error message
 
@@ -70,6 +72,7 @@ public class Game {
                         System.out.println("You need to choose between 5 and 30!");
                         setGameRounds();
                     }
+
 
                 } catch (Exception e) {
                     System.out.println("You cannot type letters/words here!" +
@@ -140,10 +143,14 @@ public class Game {
         }
 
         // foreach loop genom players
-        System.out.println("List of players: ");
+        System.out.println("\nList of players: ");
+        System.out.println("___________");
         for(var player : players){
-            System.out.println(player.name);
+           // System.out.println("|--------|");
+            System.out.println(" " + player.name);
+            System.out.println("|---------|");
         }
+       // System.out.println("|---------|");
 
     }
 
@@ -151,7 +158,7 @@ public class Game {
         for (var i = 1; i <= gameRounds; i++) {
             for (var player : players) {
 
-                System.out.println("===== MAIN MENU =====");
+                System.out.println("\n======================== MAIN MENU ========================");
                 System.out.println("Current round " + i + ", Total rounds: " + gameRounds);
 
                 //System.out.println("First player's turn: " + player.name +
@@ -160,25 +167,30 @@ public class Game {
                 System.out.println("It's " + player.name +"'s turn now!" +
                         " Your budget is: " + player.money);
 
-                System.out.println("1. Buy animal" +
-                        "\n2. Buy food" +
-                        "\n3. Feed animal" +
-                        "\n4. Mate animals" +
-                        "\n5. Birth new animal" +
-                        "\n6. Sell animal" +
-                        "\n7. Show animals" +
-                        "\n8. Show food" +
+                System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
 
+                System.out.println(" 1. Buy animal" +
+                                   "\n 2. Buy food" +
+                                   "\n 3. Feed animal" +
+                                   "\n 4. Mate animals" +
+                                 //  "\n 5. Birth new animal" +
+                                   "\n 5. Sell animal" +
+                                   "\n 6. Show animals" +
+                                   "\n 7. Show food" +
 
-                        "\n\n9. Exit to Start Menu");
+                                 "\n\n 8. Exit to Start Menu");
+
 
                 playerChoice(player);
 
 
                 playerLost();
+
             }
 
         }
+        lastRound();
+
 
     }
 
@@ -222,16 +234,25 @@ public class Game {
 
 
         }
-         else if(pChoice == 7) {
-            System.out.println("Your animals:");
+        else if(pChoice == 4) {
+            player.mateAnimals();
+        }
+
+
+        else if(pChoice == 5) {
+            player.sellAnimal();
+        }
+
+         else if(pChoice == 6) {
+           // System.out.println("  Your animals:");
             player.myAnimals();
         }
-         else if(pChoice == 8) {
-            System.out.println("Your food: ");
+         else if(pChoice ==7) {
+            // System.out.println("Your food: ");
              player.myFood();
         }
 
-        else if (pChoice == 9) {
+        else if (pChoice == 8) {
             System.out.println("----> back to Start Menu");
             gameStart();
         }
@@ -245,7 +266,7 @@ public class Game {
     // End the game if player have 0 money and no animals
     public void playerLost(){
         for(var player : players) {
-            if(player.money <= 0) {
+            if(player.money <= 0 && player.ownedAnimals.size() <= 0) {
                 System.out.println(player.name + " lost :(");
                 players.remove(player);
             }
@@ -257,9 +278,35 @@ public class Game {
         }
     }
 
+    public void lastRound() {
+
+            for (var player : players) {
+
+                for (var animal : player.ownedAnimals) {
+
+                    player.ownedAnimals.clear();
+
+                    int price = animal.price * animal.healthPoints;
+
+                    int budget = player.money + price;
 
 
-}
+                    System.out.println("\nLast round is over..." +
+                            "\n Returning animals back to Store ---->");
+                    System.out.println("____________________________________________");
+
+                    System.out.println(player.name + " earned " + budget + " after return....");
+                    System.out.println("\n\nGame over.....");
+
+                }
+
+
+            }
+        }
+    }
+
+
+
 
 
 
