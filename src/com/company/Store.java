@@ -49,14 +49,25 @@ public class Store {
                 // Subtract the cat.price from player.money
                 player.money -= cat.price;
 
-                System.out.println("Budget: ");
+                System.out.println("\nBudget: ");
                 System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(cat);
 
-                System.out.println(player.name + " purchased: " + "Cat " +
+              /*  System.out.println(player.name + " purchased: " + "Cat " +
                         player.ownedAnimals.get(0).animalName +
-                        ", Health: " + cat.healthPoints);
+                        ", Health: " + cat.healthPoints); */
+
+                for(var animal : player.ownedAnimals) {
+                    System.out.println(player.name + " bought "
+                            + animal.type + " "
+                            + animal.animalName + ", gender: "
+                            + animal.animalGender + ", Health: "
+                            + animal.healthPoints);
+                    System.out.println("------------------------------------------------------------");
+                }
+
+
                 buyMoreAnimals(player);
 
             }
@@ -208,12 +219,16 @@ public class Store {
     public static String askName(String animalType) {
         System.out.println("Name your " + animalType + ": ");
         return scan.next();
+
+        // deleted static ------!!!
     }
 
     public static String askGender(String name) {
         System.out.println("What gender is " + name + " (male/female): ");
 
         return scan.next();
+
+        // deleted static -----!!!
 
     }
 

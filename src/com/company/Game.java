@@ -192,6 +192,8 @@ public class Game {
         lastRound();
 
 
+
+
     }
 
     private void playerChoice(Player player) {
@@ -295,15 +297,37 @@ public class Game {
                             "\n Returning animals back to Store ---->");
                     System.out.println("____________________________________________");
 
-                    System.out.println(player.name + " earned " + budget + " after return....");
+                    System.out.println(player.name + " have " + budget + " after return....");
+
                     System.out.println("\n\nGame over.....");
+
+                    winner();
 
                 }
 
 
+
             }
         }
+
+        public void winner() {
+
+            players.sort(new Comparator<Player>() {
+                @Override
+                public int compare(Player player, Player p2) {
+                    return Integer.compare(player.money, p2.money);
+                }
+            });
+
+
+            for(var player : players) {
+                System.out.println("Winner: " + player.name);
+            }
     }
+
+        }
+
+
 
 
 
