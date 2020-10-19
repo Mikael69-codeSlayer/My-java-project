@@ -94,9 +94,22 @@ public class Store {
                 System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(rabbit);
-                System.out.println(player.name + " purchased: " + "Rabbit " +
+
+
+              /*  System.out.println(player.name + " purchased: " + "Rabbit " +
                         player.ownedAnimals.get(0).animalName +
-                        ", Health: " + rabbit.healthPoints);
+                        ", Health: " + rabbit.healthPoints); */
+
+                for(var animal : player.ownedAnimals) {
+                    System.out.println(player.name + " bought "
+                            + animal.type + " "
+                            + animal.animalName + ", gender: "
+                            + animal.animalGender + ", Health: "
+                            + animal.healthPoints);
+                    System.out.println("---------------------------------------------------------------");
+                }
+
+
                 buyMoreAnimals(player);
             }
 
