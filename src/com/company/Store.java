@@ -177,8 +177,10 @@ public class Store {
             else {
                 player.money -= donkey.price;
 
-                System.out.println("Budget: ");
-                System.out.println(player.money);
+                System.out.println("Budget: " + player.money);
+                System.out.println("===============");
+
+                //System.out.println(player.money);
                 // adds animals to ArrayList
                 player.ownedAnimals.add(donkey);
 
@@ -186,6 +188,15 @@ public class Store {
               /*  System.out.println(player.name + " purchased: " + "Donkey " +
                         player.ownedAnimals.get(0).animalName +
                         ", Health: " + donkey.healthPoints); */
+
+                for(var animal : player.ownedAnimals) {
+                    System.out.println(player.name + " bought "
+                            + animal.type + " "
+                            + animal.animalName + ", gender: "
+                            + animal.animalGender + ", Health: "
+                            + animal.healthPoints);
+                    System.out.println("--------------------------------------------------------------");
+                }
 
 
                 buyMoreAnimals(player);
