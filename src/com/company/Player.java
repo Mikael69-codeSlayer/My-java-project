@@ -56,7 +56,7 @@ public class Player {
     public void giveFood() {
 
         if (ownedFood.size() > 0) {
-          //  myAnimals();
+            //  myAnimals();
 
             System.out.println("Choose animal you want to feed (enter type) :  ");
 
@@ -96,7 +96,6 @@ public class Player {
 
 
                 }
-
 
 
             } else if (feed.equalsIgnoreCase("Rabbit")) {
@@ -170,41 +169,94 @@ public class Player {
 
     public int howMuchFood() {
 
+
+        System.out.println("Which animal do you want to feed? [name]:");
+        var name = scan.next();
+
         System.out.println("How many kg?");
         int giveFood = scan.nextInt();
 
-        for (var food : ownedFood) {
+        for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+         //   System.out.println("How many kg?");
+           // int giveFood = scan.nextInt();
 
-            if (food.amount < giveFood) {
-                System.out.println("try again");
-                howMuchFood();
 
-            } else {
+            for (var food : ownedFood) {
 
-                int healthIncrease = 10;
-                int hp = giveFood + healthIncrease;
+                if (food.amount < giveFood) {
+                    System.out.println("try again");
+                    howMuchFood();
+
+                } else {
+
+                    int healthIncrease = 10;
+                    int hp = giveFood + healthIncrease;
+
+
+                    if (name.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
+
+                        ownedAnimals.get(i).healthPoints += hp;
+
+                        System.out.println(ownedAnimals.get(i).type
+                                + " "
+                                + ownedAnimals.get(i).animalName
+                                + ", "
+                                + "Health: "
+                                + ownedAnimals.get(i).healthPoints);
+                    }
+
+                }
+
+
+         /*   System.out.println("How many kg?");
+            int giveFood = scan.nextInt();
+
+
+            for (var food : ownedFood) {
+
+                if (food.amount < giveFood) {
+                    System.out.println("try again");
+                    howMuchFood();
+
+                } else {
+
+                    int healthIncrease = 10;
+                    int hp = giveFood + healthIncrease; */
 
                 // 1kg food -> +10 hp
-                for (var animal : ownedAnimals) {
+                //  for (var animal : ownedAnimals) {
 
-                    animal.healthPoints += hp;
-                    System.out.println(animal.type
-                            + " "
-                            + animal.animalName
-                            + ", "
-                            + "Health: "
-                            + animal.healthPoints);
-                }
+
+                   /* System.out.println("Which animal do you want to feed? [name]:");
+                    var name = scan.next();
+                    for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+
+                        if (name.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
+
+                            ownedAnimals.get(i).healthPoints += hp;
+
+                            System.out.println(ownedAnimals.get(i).type
+                                    + " "
+                                    + ownedAnimals.get(i).animalName
+                                    + ", "
+                                    + "Health: "
+                                    + ownedAnimals.get(i).healthPoints);
+                        }
+                    } */
+
 
 
             }
         }
 
-
         return giveFood;
-
-
     }
+
+
+
+
+
+
 
 
     public void notAlive() {
