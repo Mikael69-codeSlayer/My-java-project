@@ -47,6 +47,7 @@ public class Game {
                 }
               // throws an Exception
             } catch (Exception e) {
+               // e.printStackTrace();
                 System.out.println("No letters / words here!" +
                         "\nEnter 1 or 2!");
                 gameStart();
@@ -243,13 +244,14 @@ public class Game {
 
         else if(pChoice == 5) {
             player.sellAnimal();
+
         }
 
          else if(pChoice == 6) {
            // System.out.println("  Your animals:");
             player.myAnimals();
         }
-         else if(pChoice ==7) {
+         else if(pChoice == 7) {
             // System.out.println("Your food: ");
              player.myFood();
         }
@@ -312,16 +314,15 @@ public class Game {
 
         public void winner() {
 
-            players.sort(new Comparator<Player>() {
-                @Override
-                public int compare(Player player, Player p2) {
-                    return Integer.compare(player.money, p2.money);
+            players.sort((Player a, Player b) -> { return a.money > b.money ? -1 : 1; });
+
+
+            for(var i = 0; i < players.size(); i++) {
+                if(i == 0) {
+                    System.out.println("Winner: " + players.get(i).name);
+                }else{
+                    System.out.println(i + 1 + "nd place" + players.get(i).name);
                 }
-            });
-
-
-            for(var player : players) {
-                System.out.println("Winner: " + player.name);
             }
     }
 
