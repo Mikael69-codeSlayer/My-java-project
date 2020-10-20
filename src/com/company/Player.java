@@ -33,7 +33,6 @@ public class Player {
             System.out.println("|----------------------------------" +
                     "-----------------------------|");
 
-
             // Decreases health
             if (ownedAnimals.size() > 0) {
                 var randomNumber = (int) ((Math.random() * (31 - 10)) + 10);
@@ -57,7 +56,7 @@ public class Player {
     public void giveFood() {
 
         if (ownedFood.size() > 0) {
-            myAnimals();
+          //  myAnimals();
 
             System.out.println("Choose animal you want to feed (enter type) :  ");
 
@@ -209,10 +208,18 @@ public class Player {
 
 
     public void notAlive() {
-        for (var animal : ownedAnimals) {
-            if (animal.healthPoints <= 0) {
-                ownedAnimals.remove(animal);
-                System.out.println("The " + animal.type + " " + animal.animalName + " died");
+
+        //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
+        // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
+
+        for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+            if (ownedAnimals.get(i).healthPoints <= 0) {
+                System.out.println("The "
+                        + ownedAnimals.get(i).type
+                        + " " + ownedAnimals.get(i).animalName
+                        + " died");
+                ownedAnimals.remove(i);
+
 
 
             }
@@ -227,8 +234,8 @@ public class Player {
             System.out.println("You need to buy 2 animals [male and female]");
         } else {
 
-            myAnimals();
-            System.out.println("------------------_______________________---------------------");
+          //  myAnimals();
+           // System.out.println("------------------_______________________---------------------");
             System.out.println("Which animals do you want to mate?" +
                     "\n1. Cats" +
                     "\n2. Rabbits" +
@@ -241,7 +248,6 @@ public class Player {
             int mateAnimal = scan.nextInt();
             if (mateAnimal == 1) {
                 System.out.println("Let's make some kittens!");
-
 
                 System.out.println("Choose a male cat [type name]");
                 var maleCat = scan.next();
@@ -262,8 +268,11 @@ public class Player {
                         var random = (int) (Math.random() * (2));
 
                         if (random == 0) {
+                            g.mainMenu();
                             System.out.println("---> no kittens :( <---");
-                            mateAnimals();
+
+
+                           // mateAnimals();
 
                         } else {
                             System.out.println("Nice! You got new kitten!");
@@ -282,20 +291,24 @@ public class Player {
                                 var cat = new Cat().createAnimal(catName, catSex);
                                 ownedAnimals.add(cat);
                             }
+                            break;
 
-                             myAnimals();
-
-                            System.out.println("Want to mate more animals?[yes/no]");
+                             /*  System.out.println("Want to mate more animals?[yes/no]");
                             var answer = scan.next();
                             if(answer.equalsIgnoreCase("yes")) {
                             mateAnimals();
                             } else if(answer.equalsIgnoreCase("no")) {
                                 g.mainMenu();
-                            }
+
+                                break;
+                            } */
 
 
                         }
-                        break;
+                       // myAnimals();
+
+                        g.mainMenu();
+
 
                     } else {
                         System.out.println("Wrong name/gender");
@@ -495,55 +508,76 @@ public class Player {
                 }
 
 
-            if (mateAnimal == 5)
+            if (mateAnimal == 5) {
+
+
                 System.out.println("Let's make some pigs!");
 
 
-            System.out.println("Choose a male pig [type name]");
-            var malePig = scan.next();
+                System.out.println("Choose a male pig [type name]");
+                var malePig = scan.next();
 
-            System.out.println("Choose a female pig [type name]");
-            var femalePig = scan.next();
+                System.out.println("Choose a female pig [type name]");
+                var femalePig = scan.next();
 
-            for (var animal : ownedAnimals) {
+                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
+                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
+                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
-                if (malePig.equalsIgnoreCase(animal.animalName) ||
-                        femalePig.equalsIgnoreCase(animal.animalName)) {
+
+                for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+
+                    if (malePig.equalsIgnoreCase(ownedAnimals.get(i).animalName) ||
+                            femalePig.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
 
-                    var random = (int) (Math.random() * (2));
+                        var random = (int) (Math.random() * (2));
 
-                    if (random == 0) {
-                        System.out.println("---> no pigs :( <---");
-                        mateAnimals();
-
-                    } else {
-                        System.out.println("Nice! You got new pig!");
-
-                        System.out.println("\nName your newborn pig: ");
-                        var pigName = scan.next();
-
-                        var pigGender = (int) (Math.random() * (2));
-                        if (pigGender == 0) {
-                            var pigSex = "male";
-                            var pig = new Pig().createAnimal(pigName, pigSex);
-                            ownedAnimals.add(pig);
+                        if (random == 0) {
+                            System.out.println("---> no pigs :( <---");
+                            mateAnimals();
 
                         } else {
-                            var pigSex = "female";
-                            var pig = new Pig().createAnimal(pigName, pigSex);
-                            ownedAnimals.add(pig);
+                            System.out.println("Nice! You got new pig!");
+
+                            System.out.println("\nName your newborn pig: ");
+                            var pigName = scan.next();
+
+                            var pigGender = (int) (Math.random() * (2));
+                            if (pigGender == 0) {
+                                var pigSex = "male";
+                                var pig = new Pig().createAnimal(pigName, pigSex);
+                                ownedAnimals.add(pig);
+
+                            } else {
+                                var pigSex = "female";
+                                var pig = new Pig().createAnimal(pigName, pigSex);
+                                ownedAnimals.add(pig);
+                            }
+                            myAnimals();
+
+                            System.out.println("Want to mate more animals?[yes/no]");
+                            var answer = scan.next();
+                            if (answer.equalsIgnoreCase("yes")) {
+                                mateAnimals();
+                            } else if (answer.equalsIgnoreCase("no")) {
+                                g.mainMenu();
+                            }
+
                         }
-                        myAnimals();
+                        break;
                     }
                 }
-
             }
+
+
             if(mateAnimal == 6) {
                 System.out.println("--------> BACK TO MAIN MENU");
                 g.mainMenu();
             }
+
         }
+
     }
 
 
