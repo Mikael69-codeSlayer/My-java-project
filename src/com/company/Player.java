@@ -295,12 +295,14 @@ public class Player {
 
                             myAnimals();
 
+
                         }
 
                     } else {
                         System.out.println("Wrong name/gender");
                         mateAnimals();
                     }
+
 
                 }
 
@@ -448,8 +450,8 @@ public class Player {
                 }
             }
 
-            if(mateAnimal == 5)
-            System.out.println("Let's make some pigs!");
+            if (mateAnimal == 5)
+                System.out.println("Let's make some pigs!");
 
 
             System.out.println("Choose a male pig [type name]");
@@ -487,14 +489,15 @@ public class Player {
                             var pig = new Pig().createAnimal(pigName, pigSex);
                             ownedAnimals.add(pig);
                         }
-
                         myAnimals();
-
                     }
                 }
             }
+            if(mateAnimal == 6) {
+                System.out.println("--------> BACK TO MAIN MENU");
+                g.mainMenu();
+            }
         }
-
     }
 
 
@@ -511,34 +514,48 @@ public class Player {
        } else {
 
            myAnimals();
-           System.out.println("Which animal you want to sell?");
+           System.out.println("Which animal do you want to sell?");
 
            System.out.println("-----------------------------------------");
 
            System.out.println("Type a name: ");
            var sell = scan.next();
 
-           for(var animal : ownedAnimals) {
-               if (sell.equalsIgnoreCase(animal.animalName)) {
+           for(var i = ownedAnimals.size() - 1; i >= 0; i--) {
+
+               System.out.println(ownedAnimals.get(i).animalName);
+
+               if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
                    System.out.println("Price for your animal: ");
-                   int price = animal.price * animal.healthPoints;
+                   int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
                    System.out.println(price);
 
-                   System.out.println("Are you sure that you want to sell this animal?");
+                   System.out.println("Are you sure that you want to sell this animal? [yes/no]");
                    var yesNo = scan.next();
 
                    if(yesNo.equalsIgnoreCase("yes")) {
-                       ownedAnimals.remove(animal);
 
                        int budget = money + price;
 
-                       System.out.println("You sold " + animal.animalName + " " + animal.type
-                       + " and got +" + price);
+                       System.out.println("You sold "
+                               + ownedAnimals.get(i).animalName
+                               + " " + ownedAnimals.get(i).type
+                               + " and got +"
+                               + price);
 
                        System.out.println("---------------------------------------");
                        System.out.println("Your budget now: " + budget);
+                       ownedAnimals.remove(ownedAnimals.get(i));
 
+                       System.out.println("Want to sell more animals?[yes/no]");
+                       var answer = scan.next();
+                       if(answer.equalsIgnoreCase("yes")) {
+                           sellAnimal();
+                       } else {
+                           g.mainMenu();
+                       }
+                       break;
 
                    } else if(yesNo.equalsIgnoreCase("no")) {
                        System.out.println("----> back to MAIN MENU");
@@ -562,45 +579,6 @@ public class Player {
 
 }
 
-
-
-
-
-
-           // (ownedAnimals.size() <= 0) {
-             //   System.out.println("You need to buy animals [2]");
-
-
-
-
-
-
-
-
-    // Fix it later
-
-   /* public void tooMuch() {
-        for(var animal : ownedAnimals) {
-            if(animal.healthPoints <= 100) {
-                System.out.println("Your " + animal.type + " " + animal.animalName
-                + " have already 100 hp ");
-            }
-        }
-    } */
-
-
-
-
-  /*  public void decreaseHealth() {
-          if(ownedAnimals.size() > 0) {
-            for(var animal : ownedAnimals) {
-                System.out.println(animal);
-                var randomNumber = (int)((Math.random() * (31 - 10)) + 10);
-                animal.healthPoints -= randomNumber;
-            }
-
-        }
-    } */
 
 
 
