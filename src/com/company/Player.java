@@ -98,20 +98,6 @@ public class Player {
 
                 }
 
-                // howMuchFood();
-
-
-
-
-
-                /*     System.out.println("How many kg?");
-                    int kg = scan.nextInt();
-                    if(kg == 1) {
-                        for(var animal : ownedAnimals) {
-                            animal.healthPoints += 10;
-                            System.out.println(animal.healthPoints);
-                        }
-                    } */
 
 
             } else if (feed.equalsIgnoreCase("Rabbit")) {
@@ -263,10 +249,14 @@ public class Player {
                 System.out.println("Choose a female cat [type name]");
                 var femaleCat = scan.next();
 
-                for (var animal : ownedAnimals) {
+                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
+                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
+                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
-                    if (maleCat.equalsIgnoreCase(animal.animalName) ||
-                            femaleCat.equalsIgnoreCase(animal.animalName)) {
+                for (var i = ownedAnimals.size() - 1; i >= 0; i-- ) {
+
+                    if (maleCat.equalsIgnoreCase(ownedAnimals.get(i).animalName) ||
+                            femaleCat.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
 
                         var random = (int) (Math.random() * (2));
@@ -293,10 +283,10 @@ public class Player {
                                 ownedAnimals.add(cat);
                             }
 
-                            myAnimals();
-
+                             myAnimals();
 
                         }
+                        break;
 
                     } else {
                         System.out.println("Wrong name/gender");
