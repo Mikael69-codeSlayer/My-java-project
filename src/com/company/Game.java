@@ -168,18 +168,24 @@ public class Game {
                 System.out.println("It's " + player.name +"'s turn now!" +
                         " Your budget is: " + player.money);
 
+                System.out.println("\n WARNING! Your animals will loose hp (10-30) every round!" +
+                                   "\nDont forget to buy food!");
+
+                    player.myAnimals();
+
+
+
                 System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
 
                 System.out.println(" 1. Buy animal" +
                                    "\n 2. Buy food" +
                                    "\n 3. Feed animal" +
                                    "\n 4. Mate animals" +
-                                 //  "\n 5. Birth new animal" +
                                    "\n 5. Sell animal" +
-                                   "\n 6. Show animals" +
-                                   "\n 7. Show food" +
+                                  // "\n 6. Show animals" +
+                                   "\n 6. Show food" +
 
-                                 "\n\n 8. Exit to Start Menu");
+                                 "\n\n 7. Exit to Start Menu");
 
 
                 playerChoice(player);
@@ -212,29 +218,6 @@ public class Game {
 
            player.giveFood();
 
-            /*System.out.println("Which animal you want to feed? (animal type) : ");
-            player.myAnimals();
-
-            String feed = scan.next();
-            if(feed.equalsIgnoreCase("cat")) {
-                System.out.println("Your cat can eat: \"CatNoodles\", \"Fish\", \"Bananas\", \"Berries\"");
-
-
-
-
-            } else if(feed.equalsIgnoreCase("rabbit")) {
-                System.out.println("Your rabbit can eat: \"Carrot\", \"Cucumber\", \"Zucchini\"");
-
-            } else if(feed.equalsIgnoreCase("horse")) {
-                System.out.println("Your horse can eat:  \"Melons\", \"Pumpkin\", \"Grass\"");
-
-            } else if(feed.equalsIgnoreCase("donkey")) {
-                System.out.println("Your donkey can eat: \"Pear\", \"Apples\", \"SugarBeet\"");
-
-            } else if(feed.equalsIgnoreCase("pig")) {
-                System.out.println("Your pig can eat: \"Corn\", \"Soybeans\"");
-            } */
-
 
         }
         else if(pChoice == 4) {
@@ -247,16 +230,16 @@ public class Game {
 
         }
 
-         else if(pChoice == 6) {
+       /*  else if(pChoice == 6) {
            // System.out.println("  Your animals:");
             player.myAnimals();
-        }
-         else if(pChoice == 7) {
+        } */
+         else if(pChoice == 6) {
             // System.out.println("Your food: ");
              player.myFood();
         }
 
-        else if (pChoice == 8) {
+        else if (pChoice == 7) {
             System.out.println("----> back to Start Menu");
             gameStart();
         }
@@ -299,9 +282,12 @@ public class Game {
                             "\n Returning animals back to Store ---->");
                     System.out.println("____________________________________________");
 
-                    System.out.println(player.name + " have " + budget + " after return....");
+
+                        System.out.println(player.name + " have " + budget + " after return....");
+
 
                     System.out.println("\n\nGame over.....");
+                    System.out.println("---------------------------");
 
                     winner();
 
@@ -314,14 +300,14 @@ public class Game {
 
         public void winner() {
 
-            players.sort((Player a, Player b) -> { return a.money > b.money ? -1 : 1; });
+            players.sort((Player a, Player b) -> a.money > b.money ? -1 : 1);
 
 
             for(var i = 0; i < players.size(); i++) {
                 if(i == 0) {
                     System.out.println("Winner: " + players.get(i).name);
                 }else{
-                    System.out.println(i + 1 + "nd place" + players.get(i).name);
+                    System.out.println(i + 1 + " nd place: " + players.get(i).name);
                 }
             }
     }
