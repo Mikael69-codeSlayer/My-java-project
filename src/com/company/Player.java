@@ -442,10 +442,15 @@ public class Player {
                 System.out.println("Choose a female donkey [type name]");
                 var femaleDonkey = scan.next();
 
-                for (var animal : ownedAnimals) {
+                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
+                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
+                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
-                    if (maleDonkey.equalsIgnoreCase(animal.animalName) ||
-                            femaleDonkey.equalsIgnoreCase(animal.animalName)) {
+
+                for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+
+                    if (maleDonkey.equalsIgnoreCase(ownedAnimals.get(i).animalName) ||
+                            femaleDonkey.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
 
                         var random = (int) (Math.random() * (2));
@@ -474,10 +479,21 @@ public class Player {
 
                             myAnimals();
 
+                            System.out.println("Want to mate more animals?[yes/no]");
+                            var answer = scan.next();
+                            if(answer.equalsIgnoreCase("yes")) {
+                                mateAnimals();
+                            } else if(answer.equalsIgnoreCase("no")) {
+                                g.mainMenu();
+                            }
+
+                        }
+                        break;
+
                         }
                     }
                 }
-            }
+
 
             if (mateAnimal == 5)
                 System.out.println("Let's make some pigs!");
