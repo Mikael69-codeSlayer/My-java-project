@@ -379,11 +379,15 @@ public class Player {
                 System.out.println("Choose a female cat [type name]");
                 var femaleHorse = scan.next();
 
-                for (var animal : ownedAnimals) {
 
-                    if (maleHorse.equalsIgnoreCase(animal.animalName) ||
-                            femaleHorse.equalsIgnoreCase(animal.animalName)) {
+                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
+                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
+                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
+                for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+
+                    if (maleHorse.equalsIgnoreCase(ownedAnimals.get(i).animalName) ||
+                            femaleHorse.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
                         var random = (int) (Math.random() * (2));
 
@@ -411,10 +415,21 @@ public class Player {
 
                             myAnimals();
 
+                            System.out.println("Want to mate more animals?[yes/no]");
+                            var answer = scan.next();
+                            if(answer.equalsIgnoreCase("yes")) {
+                                mateAnimals();
+                            } else if(answer.equalsIgnoreCase("no")) {
+                                g.mainMenu();
+                            }
+
+                        }
+                        break;
+
                         }
                     }
                 }
-            }
+
 
 
             if (mateAnimal == 4) {
