@@ -285,6 +285,15 @@ public class Player {
 
                              myAnimals();
 
+                            System.out.println("Want to mate more animals?[yes/no]");
+                            var answer = scan.next();
+                            if(answer.equalsIgnoreCase("yes")) {
+                            mateAnimals();
+                            } else if(answer.equalsIgnoreCase("no")) {
+                                g.mainMenu();
+                            }
+
+
                         }
                         break;
 
@@ -308,10 +317,14 @@ public class Player {
                 System.out.println("Choose a female rabbit [type name]");
                 var femaleRabbit = scan.next();
 
-                for (var animal : ownedAnimals) {
+                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
+                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
+                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
-                    if (maleRabbit.equalsIgnoreCase(animal.animalName) ||
-                            femaleRabbit.equalsIgnoreCase(animal.animalName)) {
+                for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
+
+                    if (maleRabbit.equalsIgnoreCase(ownedAnimals.get(i).animalName) ||
+                            femaleRabbit.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
 
                         var random = (int) (Math.random() * (2));
@@ -340,10 +353,21 @@ public class Player {
 
                             myAnimals();
 
+                            System.out.println("Want to mate more animals?[yes/no]");
+                            var answer = scan.next();
+                            if(answer.equalsIgnoreCase("yes")) {
+                                mateAnimals();
+                            } else if(answer.equalsIgnoreCase("no")) {
+                                g.mainMenu();
+                            }
+
+                        }
+                        break;
+
                         }
                     }
                 }
-            }
+
 
             if (mateAnimal == 3) {
                 System.out.println("Let's make some horses!");
@@ -482,6 +506,7 @@ public class Player {
                         myAnimals();
                     }
                 }
+
             }
             if(mateAnimal == 6) {
                 System.out.println("--------> BACK TO MAIN MENU");
