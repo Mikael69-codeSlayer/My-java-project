@@ -306,7 +306,7 @@ public class Player {
 
             }
 
-            if(mateAnimal == 2) {
+            if (mateAnimal == 2) {
                 System.out.println("Let's make some rabbits!");
 
 
@@ -352,43 +352,140 @@ public class Player {
                     }
                 }
             }
-            System.out.println("Let's make some horses!");
+
+            if (mateAnimal == 3) {
+                System.out.println("Let's make some horses!");
 
 
-            System.out.println("Choose a male horse [type name]");
-            var maleHorse = scan.next();
+                System.out.println("Choose a male horse [type name]");
+                var maleHorse = scan.next();
 
-            System.out.println("Choose a female cat [type name]");
-            var femaleHorse = scan.next();
+                System.out.println("Choose a female cat [type name]");
+                var femaleHorse = scan.next();
+
+                for (var animal : ownedAnimals) {
+
+                    if (maleHorse.equalsIgnoreCase(animal.animalName) ||
+                            femaleHorse.equalsIgnoreCase(animal.animalName)) {
+
+
+                        var random = (int) (Math.random() * (2));
+
+                        if (random == 0) {
+                            System.out.println("---> no horses :( <---");
+                            mateAnimals();
+
+                        } else {
+                            System.out.println("Nice! You got new horse!");
+
+                            System.out.println("\nName your newborn horse: ");
+                            var horseName = scan.next();
+
+                            var horseGender = (int) (Math.random() * (2));
+                            if (horseGender == 0) {
+                                var horseSex = "male";
+                                var horse = new Horse().createAnimal(horseName, horseSex);
+                                ownedAnimals.add(horse);
+
+                            } else {
+                                var horseSex = "female";
+                                var horse = new Horse().createAnimal(horseName, horseSex);
+                                ownedAnimals.add(horse);
+                            }
+
+                            myAnimals();
+
+                        }
+                    }
+                }
+            }
+
+
+            if (mateAnimal == 4) {
+                System.out.println("Let's make some donkeys!");
+
+
+                System.out.println("Choose a male donkey [type name]");
+                var maleDonkey = scan.next();
+
+                System.out.println("Choose a female donkey [type name]");
+                var femaleDonkey = scan.next();
+
+                for (var animal : ownedAnimals) {
+
+                    if (maleDonkey.equalsIgnoreCase(animal.animalName) ||
+                            femaleDonkey.equalsIgnoreCase(animal.animalName)) {
+
+
+                        var random = (int) (Math.random() * (2));
+
+                        if (random == 0) {
+                            System.out.println("---> no donkeys :( <---");
+                            mateAnimals();
+
+                        } else {
+                            System.out.println("Nice! You got new doneky!");
+
+                            System.out.println("\nName your newborn donkey: ");
+                            var donkeyName = scan.next();
+
+                            var donkeyGender = (int) (Math.random() * (2));
+                            if (donkeyGender == 0) {
+                                var donkeySex = "male";
+                                var donkey = new Donkey().createAnimal(donkeyName, donkeySex);
+                                ownedAnimals.add(donkey);
+
+                            } else {
+                                var donkeySex = "female";
+                                var donkey = new Donkey().createAnimal(donkeyName, donkeySex);
+                                ownedAnimals.add(donkey);
+                            }
+
+                            myAnimals();
+
+                        }
+                    }
+                }
+            }
+
+            if(mateAnimal == 5)
+            System.out.println("Let's make some pigs!");
+
+
+            System.out.println("Choose a male pig [type name]");
+            var malePig = scan.next();
+
+            System.out.println("Choose a female pig [type name]");
+            var femalePig = scan.next();
 
             for (var animal : ownedAnimals) {
 
-                if (maleHorse.equalsIgnoreCase(animal.animalName) ||
-                        femaleHorse.equalsIgnoreCase(animal.animalName)) {
+                if (malePig.equalsIgnoreCase(animal.animalName) ||
+                        femalePig.equalsIgnoreCase(animal.animalName)) {
 
 
                     var random = (int) (Math.random() * (2));
 
                     if (random == 0) {
-                        System.out.println("---> no horses :( <---");
+                        System.out.println("---> no pigs :( <---");
                         mateAnimals();
 
                     } else {
-                        System.out.println("Nice! You got new horse!");
+                        System.out.println("Nice! You got new pig!");
 
-                        System.out.println("\nName your newborn horse: ");
-                        var horseName = scan.next();
+                        System.out.println("\nName your newborn pig: ");
+                        var pigName = scan.next();
 
-                        var horseGender = (int) (Math.random() * (2));
-                        if (horseGender == 0) {
-                            var horseSex = "male";
-                            var horse = new Horse().createAnimal(horseName, horseSex);
-                            ownedAnimals.add(horse);
+                        var pigGender = (int) (Math.random() * (2));
+                        if (pigGender == 0) {
+                            var pigSex = "male";
+                            var pig = new Pig().createAnimal(pigName, pigSex);
+                            ownedAnimals.add(pig);
 
                         } else {
-                            var horseSex = "female";
-                            var horse = new Horse().createAnimal(horseName, horseSex);
-                            ownedAnimals.add(horse);
+                            var pigSex = "female";
+                            var pig = new Pig().createAnimal(pigName, pigSex);
+                            ownedAnimals.add(pig);
                         }
 
                         myAnimals();
@@ -398,10 +495,12 @@ public class Player {
             }
         }
 
-
-
-
     }
+
+
+
+
+
 
     public void sellAnimal() {
 
