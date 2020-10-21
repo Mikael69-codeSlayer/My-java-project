@@ -165,39 +165,39 @@ public class Game {
                 //System.out.println("First player's turn: " + player.name +
                 //      "\n Budget: " + player.money + "kr");
 
-                System.out.println("It's " + player.name +"'s turn now!" +
+                System.out.println("It's " + player.name + "'s turn now!" +
                         " Your budget is: " + player.money);
 
-                System.out.println("\n WARNING! Your animals will loose hp (10-30) every round!" +
-                                   "\nDont forget to buy food!");
 
+                if (player.ownedAnimals.size() > 0) {
                     player.myAnimals();
 
+                }
+
+                    System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
 
 
-                System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
+                    System.out.println(" 1. Buy animal" +
+                            "\n 2. Buy food" +
+                            "\n 3. Feed animal" +
+                            "\n 4. Mate animals" +
+                            "\n 5. Sell animal" +
+                            // "\n 6. Show animals" +
+                            "\n 6. Show food" +
 
-                System.out.println(" 1. Buy animal" +
-                                   "\n 2. Buy food" +
-                                   "\n 3. Feed animal" +
-                                   "\n 4. Mate animals" +
-                                   "\n 5. Sell animal" +
-                                  // "\n 6. Show animals" +
-                                   "\n 6. Show food" +
-
-                                 "\n\n 7. Exit to Start Menu");
+                            "\n\n 7. Exit to Start Menu");
 
 
-                playerChoice(player);
+                    playerChoice(player);
 
 
-                playerLost();
+                    playerLost();
+
+                }
+
 
             }
-
-        }
-        lastRound();
-
+            lastRound();
 
 
 
