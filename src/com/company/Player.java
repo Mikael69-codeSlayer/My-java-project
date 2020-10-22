@@ -22,6 +22,8 @@ public class Player {
 
     public void myAnimals() {
         // animal list
+        System.out.println("\n WARNING! Your animals will loose hp (10-30) every round!" +
+                "\nDont forget to buy food!");
         System.out.println("==========================" +
                 " Your animals =========================");
         for (var animal : ownedAnimals) {
@@ -177,8 +179,8 @@ public class Player {
         int giveFood = scan.nextInt();
 
         for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
-         //   System.out.println("How many kg?");
-           // int giveFood = scan.nextInt();
+            //   System.out.println("How many kg?");
+            // int giveFood = scan.nextInt();
 
 
             for (var food : ownedFood) {
@@ -245,18 +247,11 @@ public class Player {
                     } */
 
 
-
             }
         }
 
         return giveFood;
     }
-
-
-
-
-
-
 
 
     public void notAlive() {
@@ -273,9 +268,8 @@ public class Player {
                 ownedAnimals.remove(i);
 
 
-
             }
-            // tried g.mainMenu(); Didn't work :( .....
+
 
         }
     }
@@ -284,10 +278,12 @@ public class Player {
 
         if (ownedAnimals.size() < 2) {
             System.out.println("You need to buy 2 animals [male and female]");
+
+
         } else {
 
-          //  myAnimals();
-           // System.out.println("------------------_______________________---------------------");
+
+
             System.out.println("Which animals do you want to mate?" +
                     "\n1. Cats" +
                     "\n2. Rabbits" +
@@ -297,7 +293,11 @@ public class Player {
 
                     "\n\n6. ---> MAIN MENU");
 
+
             int mateAnimal = scan.nextInt();
+
+
+            // FIX
             if (mateAnimal == 1) {
                 System.out.println("Let's make some kittens!");
 
@@ -307,74 +307,70 @@ public class Player {
                 System.out.println("Choose a female cat [type name]");
                 var femaleCat = scan.next();
 
-                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
-                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
-                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
-                for (var i = ownedAnimals.size() - 1; i >= 0; i-- ) {
+
+
+                for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
 
                     if (maleCat.equalsIgnoreCase(ownedAnimals.get(i).animalName) ||
                             femaleCat.equalsIgnoreCase(ownedAnimals.get(i).animalName)) {
 
+                            var random = (int) (Math.random() * (2));
 
-                        var random = (int) (Math.random() * (2));
+                            if (random == 0) {
 
-                        if (random == 0) {
-                            g.mainMenu();
-                            System.out.println("---> no kittens :( <---");
-
-
-                           // mateAnimals();
-
-                        } else {
-                            System.out.println("Nice! You got new kitten!");
-
-                            System.out.println("\nName your newborn kitten: ");
-                            var catName = scan.next();
-
-                            var catGender = (int) (Math.random() * (2));
-                            if (catGender == 0) {
-                                var catSex = "male";
-                                var cat = new Cat().createAnimal(catName, catSex);
-                                ownedAnimals.add(cat);
-
-                            } else {
-                                var catSex = "female";
-                                var cat = new Cat().createAnimal(catName, catSex);
-                                ownedAnimals.add(cat);
-                            }
-                            break;
-
-                             /*  System.out.println("Want to mate more animals?[yes/no]");
-                            var answer = scan.next();
-                            if(answer.equalsIgnoreCase("yes")) {
-                            mateAnimals();
-                            } else if(answer.equalsIgnoreCase("no")) {
+                                System.out.println("---> no kittens :( <---");
                                 g.mainMenu();
 
+
+                            } else {
+                                System.out.println("Nice! You got new kitten!");
+                                System.out.println("Name your newborn kitten: ");
+                                String catName = scan.next();
+                                catName+=scan.nextLine();
+                               // System.out.println("Name your newborn kitten: " + catName);
+
+
+
+
+                                var catGender = (int) (Math.random() * (2));
+                                if (catGender == 0) {
+                                    var catSex = "male";
+                                    var cat = new Cat().createAnimal(catName, catSex);
+                                    ownedAnimals.add(cat);
+
+                                } else {
+                                    var catSex = "female";
+                                    var cat = new Cat().createAnimal(catName, catSex);
+                                    ownedAnimals.add(cat);
+                                }
                                 break;
-                            } */
 
 
+                            }
                         }
-                       // myAnimals();
 
-                        g.mainMenu();
+                }
 
 
-                    } else {
-                        System.out.println("Wrong name/gender");
-                        mateAnimals();
-                    }
+
+                   g.mainMenu();
 
 
                 }
 
-            }
+                /*else {
+                    System.out.println("Wrong name/gender");
+                    mateAnimals();
+                } */
+
+
+
+
+
 
             if (mateAnimal == 2) {
                 System.out.println("Let's make some rabbits!");
-
 
                 System.out.println("Choose a male rabbit [type name]");
                 var maleRabbit = scan.next();
@@ -382,9 +378,7 @@ public class Player {
                 System.out.println("Choose a female rabbit [type name]");
                 var femaleRabbit = scan.next();
 
-                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
-                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
-                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
+
 
                 for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
 
@@ -396,13 +390,15 @@ public class Player {
 
                         if (random == 0) {
                             System.out.println("---> no rabbits :( <---");
-                            mateAnimals();
+                          //  mateAnimals()
+
+                            g.mainMenu();
 
                         } else {
                             System.out.println("Nice! You got new rabbit!");
-
-                            System.out.println("\nName your newborn rabbit: ");
-                            var rabbitName = scan.next();
+                            System.out.println("Name your newborn rabbit: ");
+                            String rabbitName = scan.next();
+                            rabbitName+=scan.nextLine();
 
                             var rabbitGender = (int) (Math.random() * (2));
                             if (rabbitGender == 0) {
@@ -441,13 +437,10 @@ public class Player {
                 System.out.println("Choose a male horse [type name]");
                 var maleHorse = scan.next();
 
-                System.out.println("Choose a female cat [type name]");
+                System.out.println("Choose a female horse [type name]");
                 var femaleHorse = scan.next();
 
 
-                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
-                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
-                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
                 for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
 
@@ -458,13 +451,13 @@ public class Player {
 
                         if (random == 0) {
                             System.out.println("---> no horses :( <---");
-                            mateAnimals();
+                            g.mainMenu();
 
                         } else {
                             System.out.println("Nice! You got new horse!");
-
-                            System.out.println("\nName your newborn horse: ");
-                            var horseName = scan.next();
+                            System.out.println("Name your newborn horse: ");
+                            String horseName = scan.next();
+                            horseName+=scan.nextLine();
 
                             var horseGender = (int) (Math.random() * (2));
                             if (horseGender == 0) {
@@ -507,9 +500,6 @@ public class Player {
                 System.out.println("Choose a female donkey [type name]");
                 var femaleDonkey = scan.next();
 
-                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
-                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
-                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
 
                 for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
@@ -522,13 +512,13 @@ public class Player {
 
                         if (random == 0) {
                             System.out.println("---> no donkeys :( <---");
-                            mateAnimals();
+                            g.mainMenu();
 
                         } else {
-                            System.out.println("Nice! You got new doneky!");
-
-                            System.out.println("\nName your newborn donkey: ");
-                            var donkeyName = scan.next();
+                            System.out.println("Nice! You got new donkeys!");
+                            System.out.println("Name your newborn donkeys: ");
+                            String donkeyName = scan.next();
+                            donkeyName+=scan.nextLine();
 
                             var donkeyGender = (int) (Math.random() * (2));
                             if (donkeyGender == 0) {
@@ -572,9 +562,6 @@ public class Player {
                 System.out.println("Choose a female pig [type name]");
                 var femalePig = scan.next();
 
-                //  for(var i = ownedAnimals.size() - 1; i >= 0; i--)
-                // if (sell.equalsIgnoreCase(ownedAnimals.get(i).animalName))
-                // int price = ownedAnimals.get(i).price * ownedAnimals.get(i).healthPoints;
 
 
                 for (var i = ownedAnimals.size() - 1; i >= 0; i--) {
@@ -587,13 +574,13 @@ public class Player {
 
                         if (random == 0) {
                             System.out.println("---> no pigs :( <---");
-                            mateAnimals();
+                            g.mainMenu();
 
                         } else {
                             System.out.println("Nice! You got new pig!");
-
-                            System.out.println("\nName your newborn pig: ");
-                            var pigName = scan.next();
+                            System.out.println("Name your newborn pig: ");
+                            String pigName = scan.next();
+                            pigName+=scan.nextLine();
 
                             var pigGender = (int) (Math.random() * (2));
                             if (pigGender == 0) {
@@ -704,10 +691,17 @@ public class Player {
        }
 
 
-
     }
 
 
+   /* public void mateCat(Cat maleCat, Cat femaleCat) {
+        if(!femaleCat.getClass().equals(maleCat.getClass())) {
+            System.out.println("Please, don't try to mate cat with other animals!");
+            mateAnimals();
+        } else if(!femaleCat.animalGender.equalsIgnoreCase(maleCat.animalGender)) {
+            System.out.println("NICE!!!!");
+        }
+    }  */
 
 }
 

@@ -4,17 +4,26 @@ import java.util.*;
 
 public abstract class Animal {
 
-    static String[] animalTypes = {"Cat", "Rabbit", "Horse", "Donkey", "Pig"};
-    static int[] animalPrices = {200, 150, 9500, 9000, 1000};
 
-    /* static String[] food = {"CatFood, Fish, Bananas, Berries", "Carrot, Cucumber, Zucchini",
-                  "Melons, Pumpkin, Grass", "Carrots, Apples, SugarBeet",
-                   "Corn, Soybeans"}; */
+    static String[] animalTypes = {"Cat", "Rabbit", "Horse", "Donkey", "Pig"};
+    static int[] animalPrices = {200, 150, 4000, 4000, 1000};
+
+    /*
+    static int[] maxAge = {2, 3, 4, 3, 3};
+
+     */
+
+
 
    public String animalName;
    public String animalGender;
    public int price;
    public int healthPoints = 100;
+   public String type; // change
+
+   //  public int initialAge;
+
+
 
 
    public Animal createAnimal (String animalName, String animalGender) {
@@ -27,8 +36,14 @@ public abstract class Animal {
        this.animalName = animalName;
        this.animalGender = animalGender;
        this.price = animalPrices[animalClassNumber];
+       this.type = animalTypes[animalClassNumber]; //change
+
+       // this.initialAge = 1;
+
        return this;
    }
+
+
 }
 
 

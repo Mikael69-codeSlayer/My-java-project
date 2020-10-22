@@ -20,8 +20,8 @@ public class Store {
 
         System.out.println("1. Cat.  Price 200kr" +
                 "\n2. Rabbit.  Price 150kr" +
-                "\n3. Horse.  Price 9500kr" +
-                "\n4. Donkey.  Price 9000kr" +
+                "\n3. Horse.  Price 4000kr" +
+                "\n4. Donkey.  Price 4000" +
                 "\n5. Pig.  Price 1000kr" +
 
                 "\n\n6. Exit --> Main Menu");
@@ -275,7 +275,9 @@ public class Store {
 
 
     public static String askName(String animalType) {
+
         System.out.println("Name your " + animalType + ": ");
+
         return scan.next();
 
         // deleted static ------!!!
@@ -992,7 +994,10 @@ public class Store {
 
 
     }
-}
+
+
+    }
+
 
 
 

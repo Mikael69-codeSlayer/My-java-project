@@ -193,10 +193,13 @@ public class Game {
 
                     playerLost();
 
+
                 }
 
 
+
             }
+
             lastRound();
 
 
@@ -244,6 +247,7 @@ public class Game {
             gameStart();
         }
 
+
         else {
             System.out.println("Wrong input. Try again.");
             mainMenu();
@@ -272,6 +276,12 @@ public class Game {
                 for (var animal : player.ownedAnimals) {
 
                     player.ownedAnimals.clear();
+
+
+
+                    // Kunna namnge djur med mellanslag
+                    // Bara få lov att testa en parning/uppfödning per runda
+                    // Vem har vunnit??? Visa detta
 
                     int price = animal.price * animal.healthPoints;
 
