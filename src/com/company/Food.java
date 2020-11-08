@@ -47,6 +47,7 @@ class Zucchini extends Food {
 }
 
 class Melons extends Food {
+
 }
 
 class Pumpkin extends Food {

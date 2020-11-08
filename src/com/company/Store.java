@@ -267,6 +267,7 @@ public class Store {
             foodList(player);
         } else {
             g.mainMenu(); // player
+
         }
     }
 

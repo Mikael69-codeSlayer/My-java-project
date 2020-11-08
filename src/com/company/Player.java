@@ -162,7 +162,7 @@ public class Player {
 
 
         } else {
-            System.out.println("You have no food!");
+            System.out.println("You have no food! ---");
             g.mainMenu();
         }
 

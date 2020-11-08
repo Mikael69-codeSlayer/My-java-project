@@ -30,7 +30,7 @@ public abstract class Animal {
 
        var animalClassNumber = Arrays.asList(animalTypes).indexOf(this.getClass().getSimpleName());
        if(!animalGender.equalsIgnoreCase("male") &&
-               !animalGender.equalsIgnoreCase("female")) {
+               !animalGender.equalsIgnoreCase("female--")) {
            throw new RuntimeException("Gender must be male or female");
        }
        this.animalName = animalName;
